@@ -1,72 +1,110 @@
 # TimeShiftVR — NEXT
 
-Updated: 2026-08-25 08:19 +03
+Updated: 2026-08-25 22:54 +03
 
-## Current serial gate — facade slot13 -> backend renderer
+## Current serial gate — v5.3 projection identity recovery
 
-The shader/cache and generic renderer-authority phases are no longer the active blocker.
+Canonical package:
+`TIMESHIFTVR_PROJECTION_IDENTITY_RECOVERY_v5.3.0_30S_ONECLICK.zip`
 
-Current missing fact:
+The old facade-slot13 COLD bridge is no longer the active project gate. True same-frame OpenXR stereo already exists. The immediate missing fact is whether the remaining fish-eye/crooked/tilted binocular image is caused by the two now-identified projection/eye-identity errors.
 
-`camera facade slot13 -> ? -> d3dREND_DRIVER matrix producer`
+## Frozen baseline that must hold
+From v4.7.2 and later stable transport runs:
+- same-frame LEFT/RIGHT re-entry works.
+- distinct live eye images reach OpenXR.
+- OpenXR host publishes real stereo frames.
+- no continuing stack/re-entry/matrix/readback failures are acceptable.
 
-Frozen late-build addresses:
+v5.3 must not regress this transport while fixing eye identity/projection.
 
-| Build | Facade slot13 | Camera feed | Camera dispatch | Backend matrix producer |
-|---|---:|---:|---:|---:|
-| Retail | `0x007FB740` | `0x007FB790` | `0x007FBF50` | `0x0079E100` |
-| Sierra SP | `0x007F2830` | `0x007F2880` | `0x007F3040` | `0x00789E40` |
-| Sierra MP | `0x007FA190` | `0x007FA1E0` | `0x007FA9A0` | `0x0079E830` |
+## v5.3 exact changes
+Only the projection/identity contract is being corrected:
+1. remove host-side LEFT/RIGHT image payload swap;
+2. keep each game eye bound to its own physical `XrView` pose and FOV;
+3. use row-vector RH off-axis coefficients:
+   - X: `(l+r)/(r-l)`;
+   - Y: `(u+d)/(u-d)`;
+4. retain ROW_VIEW_CORRECTED orientation and BODY_PLUS_HMD camera lock;
+5. remove active shadow mutation;
+6. remove main-world-only/Z-reflection surgery;
+7. capture the real final game backbuffer once before desktop SBS overwrite;
+8. rank D3D9 draws after `RETURN_RIGHT` passively.
 
-Active analyzer:
+Static audit: **31 / 31 checks PASS**.
 
-`TIMESHIFTVR_CAMERA_FACADE_BRIDGE_COLD_v4_0_0`
+## Run contract
+Focused runtime window: **30 seconds after true stereo starts**.
 
-### PASS
-Retail + SP + MP independently show the same facade-slot13 forwarding path into the proven backend renderer/matrix-producer lane.
+During this run:
+- do not press F2/F3/F5;
+- F8 recenter is allowed if needed;
+- do not add a second intrusive capture DLL;
+- let the built-in passive D3D9/XR evidence collector finish and restore the baseline automatically.
 
-### PARTIAL
-One late build exposes a direct bridge and the homologs require one additional static hop.
+## v5.3 visual PASS
+All of the following should hold:
+- LEFT/RIGHT remain live and distinct;
+- binocular geometry no longer has the v5.2 fish-eye/crooked character attributable to eye identity/sign errors;
+- head yaw/pitch/roll is coherent enough to continue owner work;
+- no catastrophic black wedges / eye desync regression;
+- same-frame stereo transport stays intact.
 
-### FAIL / ADAPT
-Facade slot13 is unrelated to the proven backend lane. Do not return to generic `+0x34` scans; inspect only the tiny facade slot13 stubs/direct targets and revise the architecture.
+Shadows are **not required** for projection PASS. Shadow repair is a separate downstream gate.
 
-## Next gate after PASS — facade dispatcher upstream context
+## v5.3 structural PASS
+Automatic result should show:
+- true stereo starts;
+- same-frame pair counter grows;
+- zero or bounded/understood stack/re-entry/matrix failures;
+- XR publication/readback remains healthy;
+- LEFT image remains LEFT through submission and RIGHT remains RIGHT;
+- final backbuffer capture is present;
+- passive post-`RETURN_RIGHT` draw ranking is populated.
 
-Target the exact camera-dispatch methods:
-- retail `0x007FBF50`.
-- SP `0x007F3040`.
-- MP `0x007FA9A0`.
+## If v5.3 VISUAL + STRUCTURAL PASS
+Freeze projection identity as the new baseline.
 
-Recover:
-1. the exact virtual/interface slot used to invoke dispatcher;
-2. the upstream gameplay/render-view descriptor provenance;
-3. which field(s) distinguish gameplay/world camera from menu/scope/shadow/other render cameras;
-4. whether the same object/context is stable across an entire LEFT+RIGHT pair.
+Then the next missing fact becomes:
 
-Acceptance: one exact, reversible context gate that can authorize camera matrix intervention only for the intended world view.
+`where does the final lighting/shadow/color contribution get consumed or composed after RETURN_RIGHT?`
 
-## First authorized LIVE after static convergence
+Use the passive v5.3 evidence first:
+- final pre-SBS backbuffer;
+- ranked draws after `RETURN_RIGHT`;
+- render-target/texture/state history;
+- exact shader context.
 
-Only after the dispatcher/context gate is finite:
-- instrument, do not mutate;
-- record object pointer / caller / camera context / c0-c4 source identity;
-- gate on the strongest gameplay-world signal, currently raw VS CRC `0x416CFC1B` where useful;
-- one run should resolve all remaining candidate contexts.
+Do **not** immediately repeat the old one-texture mirror.
 
-LIVE PASS should answer one causal question: which exact facade/renderer context owns gameplay ViewProjection.
+A later shadow repair may reuse the **safe exact-pair** idea from `TIMESHIFTVR_SAFE_PAIR_REPAIR_v5_2_0`, but only after the final-light/final-color owner is identified.
 
-## Mutation remains blocked
-Do not yet:
-- replace c0-c3 generically at `0x007C3540` or `0x007C3970`;
-- apply HMD pose to every renderer camera;
-- treat sight CRC `0x8D672642` as an ADS-only gate;
-- start hand/controller integration;
-- build stereo transport around an unclassified camera context.
+## If v5.3 STRUCTURAL PASS but VISUAL FAIL
+Projection/camera convention remains the blocker.
 
-## Future intervention objective
-Once gameplay camera authority is exact:
+Next experiment must be one smaller causal probe against the remaining convention, not a new shadow or hand/controller feature.
 
-`gameplay camera descriptor -> facade -> backend ViewProjection source -> per-eye view/projection -> existing D3D9 draw path`
+Candidates should be chosen only from evidence produced by v5.3. Do not resurrect broad camera rewrites.
 
-Keep `c4` coherent with the per-eye camera world position when c0-c3 are changed.
+## If v5.3 STRUCTURAL FAIL
+Stop and repair the transport/build/runtime failure while preserving the v4.7.2 baseline contract. Do not interpret headset appearance from a structurally invalid run.
+
+## Parallel branch — preserve, do not promote yet
+`TIMESHIFTVR_SAFE_PAIR_REPAIR_v5_2_0`
+
+Useful proven design facts:
+- 256/256 analyzed pairs had equal LEFT/RIGHT DIP counts.
+- 26028/26028 sampled LEFT shadow-bound draws had an exact RIGHT draw at the same DIP ordinal with matching draw signature.
+- repair is draw-ordinal/signature based, not per-shader last-texture based.
+
+Status: **HOLD pending v5.3 projection verdict.**
+
+## Explicitly not next
+Do not:
+- restore v5.1 high-level `view+0x40` mutation;
+- restore v5.1 per-shader texture replay;
+- repeat the v5.2 simple exact shadow-depth mirror as the whole shadow solution;
+- force Z reflection;
+- swap only image payloads at the XR host;
+- reopen broad SDC/Ghidra archaeology;
+- start controller/hand integration before projection and final-light ownership are stable.
