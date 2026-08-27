@@ -1,14 +1,20 @@
 # TimeShiftVR — Canonical State
 
-Updated: 2026-08-25 22:54 +03
+Updated: 2026-08-27 +03
 
 ## Status
-ACTIVE. True same-frame OpenXR stereo is proven. The current blocker is **projection / physical-eye identity**, not generic camera-facade discovery.
+**ACTIVE. True same-frame OpenXR stereo remains proven. The active gate is now exact COLD render-pass ownership, not projection archaeology or another broad texture-replay LIVE sweep.**
 
-Canonical next LIVE:
-`TIMESHIFTVR_PROJECTION_IDENTITY_RECOVERY_v5.3.0_30S_ONECLICK`
+Canonical next experiment:
+`TIMESHIFTVR_OMNI_EXACT_CLOSURE_v6.1.0`
 
-The v5.1 broad camera/shadow repair is rejected. The v5.2 exact shadow bind executed correctly but did not restore visible shadows. v5.3 therefore freezes the stable stereo core and removes the two known eye/projection contract errors before any further lighting mutation.
+Status of that package: **GENERATED / COLD ONLY / result not yet returned**.
+
+Full 2026-08-27 evidence ledger:
+`docs/EVIDENCE_LEDGER_20260827.md`
+
+Historical runtime ledger through v5.3 remains in:
+`docs/RUNTIME_LINEAGE_20260825.md`
 
 ## Frozen target
 - Game: GOG TimeShift 1.02 x86.
@@ -17,170 +23,121 @@ The v5.1 broad camera/shadow repair is rejected. The v5.2 exact shadow bind exec
 - Shared tools: `C:\GOG Games\VR Research Tools`.
 - CPU-fixed startup donor SHA256: `49bcca23d3d7872fbb578183b77472b64ecd8e3f8d68bfcccb1af6f04d4d8ed6`.
 
-## Frozen COLD foundation
-The old renderer/camera archaeology remains proven, but is no longer the active gate.
+# Frozen working baseline
 
-### Shader/cache
-- 120 `.sdc`, 5040 `*_pairs` = 8 profiles × 42 scenes × 15 passes.
-- 120/120 SDC containers decode with recovered structure.
-- GLT bytes 0..23 are the 192-bit define mask.
-- Runtime shader creation matches COLD payload identity by raw CRC + byte length.
-
-### D3D9 constant lane
-Retail:
-`engine producer -> 0x007C3540 cached setter -> 0x007C3970 flusher -> D3D9 SetVertexShaderConstantF`
-
-- c0-c3 = active combined ViewProjection/world-to-clip.
-- c4 = camera world position.
-- `0x007C3970` is a flusher, not a camera builder.
-- Backend `d3dREND_DRIVER + 0x5488` is the immediate c0-c3 source; `+0xF8` feeds c4.
-
-### Camera facade
-- Anonymous facade primary vtable: `0x00DBD300`.
-- facade slot13: `0x007FB740`.
-- camera-feed slot14: `0x007FB790`.
-- camera-dispatch slot28: `0x007FBF50`.
-- The facade is separate from backend `d3dREND_DRIVER`.
-
-This evidence should be retained for owner work, but no longer blocks the working VR build.
-
-## Frozen runtime baseline — v4.7.2
-The v4.7.2 true-stereo MVP is the transport baseline that later branches must not regress:
+## v4.7.2 OLD-GOOD true-stereo core
+This remains the transport baseline that no later branch may regress:
 - 5858 completed same-frame LEFT/RIGHT pairs.
 - 41006 / 41006 LEFT/RIGHT uploads.
 - 3197 OpenXR frames.
 - Quest IPD around 63.63 mm.
-- asymmetric per-eye OpenXR FOV is available.
-- same-frame RIGHT re-entry is real.
-- headset receives live binocular content.
+- asymmetric per-eye OpenXR FOV available.
+- same-frame RIGHT re-entry proven.
+- live binocular content reaches the headset.
 
-User-observed limitations at this stage:
-- HMD yaw/roll convention was wrong/reversed.
-- shadows were absent in the duplicated eye path.
+The later OLD-GOOD effect line preserves this stereo/camera contract.
 
-## v4.9 / v5.0 runtime evidence
-The working line retained the v4.7.2 same-frame stereo scheduler and added corrected row-view HMD orientation plus D3D9 pass/resource profiling.
+## Current best effect-state branch
+The controlled v6.13 10-mode sweep preserved OLD-GOOD stereo while varying DIP/DP texture/state replay.
 
-v5.0 isolated a concrete shadow asymmetry:
-- exact native shadow texture: 1024×2048 D16.
-- native binds observed: 3817.
-- LEFT stereo binds: 256.
-- RIGHT stereo binds: 0.
-- matching RIGHT shadow-consuming draws still occur.
+User visual verdict:
+- mode 3 = DP exact TEX0+TEX1: breaks lighting.
+- mode 4 = DP resync +8 TEX0+TEX1: breaks lighting.
+- the other widened DIP+DP/resync/TEX0..3/shadow-state modes produced no material visible recovery.
+- current-best state remains OLD-GOOD + DIP exact TEX0+TEX1 (old mode 6 / v6.13 mode 1).
 
-This proves a LEFT/RIGHT resource-state asymmetry, but not that one missing bind alone is the entire visible shadow bug.
+Therefore the active problem is no longer “try more of the same texture replay.” The missing FX path needs a semantic pass owner.
 
-## v5.1.1 — structural transport PASS, visual repair FAIL
-Executed result:
-`TIMESHIFTVR_XR_TRUE_STEREO_HMD_MVP_v5_1_1_RESULT_20260825_223246.zip`
+# PROVEN COLD foundation — 2026-08-27 closure
 
-Automatic facts:
-- 3317 same-frame pairs.
-- 40242 gameplay view-source repair writes.
-- 537488 RIGHT shadow-state repair draws.
-- 183 learned shadow consumer shader pairs.
-- 23219 LEFT uploads / 23219 RIGHT uploads.
-- XR transport remained live.
-- retail baseline restored correctly after run.
+## Renderer View stack / player-frame lane
+- renderer View-stack header: `root+0x618`.
+- slot0 View: `root+0x620`.
+- `0x00956680` is the generic View-stack push/copy routine, stride `0x364`, using `0x004B0DE0`.
+- dynamic mouse-look was observed writing slot0 inside the second `0x004B0DE0` copy with saved outer ESI = `root+0x618`.
+- mirrorSys uses the same push later at secondary indices and is excluded from main slot0 ownership.
+- `0x00681DD0/0x00681EC7` are whole-View write/reset operations before dynamic submit.
+- `0x00681DD0` is called at `0x00409D37` inside `0x004098C0`; `0x004098C0` is reached by pointer/vtable lineage rather than a recovered ordinary direct caller.
 
-User-observed verdict:
-- camera/tilt became very wrong.
-- black wedges appeared.
-- eyes desynchronized.
+Exact non-mirror gameplay/body producer identity is still not fully proven.
 
-Root cause found in corpus:
-- the high-level `view+0x40` camera mutation is upstream of broader rendering/culling/lighting ownership and is too invasive.
-- the per-shader shadow replay is invalid because a sampled VS/PS pair uses **six different stage-1 textures**; storing only the last LEFT `tex1` and replaying it on unrelated RIGHT occurrences collapses state.
+## Donor candidate families
+Recovered donor shader families include rain, blood, death, distortion, low-health, bullet-time, blur/distortion, crosshair/bullet-tracers, and remove-time-filter. The crosshair/bullet-tracer donor family is specifically annotated as affecting lights.
 
-Therefore v5.1 broad repair is **REJECTED**.
+Donor/source labels are candidate generation only; retail proof remains separate.
 
-## v5.2 causal rollback + exact shadow bind
-Executed result:
-`TIMESHIFTVR_CAUSAL_ROLLBACK_SHADOW_BIND_RESULT_20260825_221925.zip`
+## Exact shader / GLT / pass evidence
+ShaderDB/RTTI closure proved:
+- 9180 PAIRS; 374 unique parsed SHA; 374/374 parse success.
+- canonical GLT slot count: 192.
+- 109 retail GLT descriptor assignments with 109 slot-index agreements.
+- GLT metadata fields at `0x600..0x62C`, stride 4; 919 static xrefs.
+- 28 RTTI pass-vtable instances in the first closure; later OMNI ranking expanded method evidence to 900 rows.
+- 375 SDC files; 198 unique SHA.
+- 120716 D3D9 blobs in the ShaderDB/RTTI closure; 203984 in the expanded OMNI closure.
+- 134 exact donor CRC matches to compiled D3D9 shader blobs.
 
-Intervention:
-- rollback v5.1 high-level camera mutation.
-- rollback main-world-only/Z-reflection surgery.
-- retain same-frame stereo.
-- mirror only the exact proven shadow-depth resource for the exact consumer pair.
+Dynamic-light GLT anchors:
+- slot 33: `SDR_GLT_PARALLAX_SHADOW`.
+- slots 41–44: `DYN_LIGHT0..3_DIFFUSE`.
+- slots 45–48: `DYN_LIGHT0..3_SPECULAR`.
+- slot 49: `DYN_LIGHT0_CUBEMAP_SHADOW`.
+- slot 72: `DYN_LIGHT_BRANCH`.
 
-Automatic facts:
-- exact 1024×2048 depth texture captures: 1.
-- 1398 exact LEFT binds.
-- 1398 same-pair RIGHT mirrored binds.
-- 0 mirror failures.
-- 2172 same-frame pairs.
-- 0 stack failures.
-- 0 re-entry failures.
-- 0 matrix-contract failures.
-- 2169 XR-published pairs.
-- 0 XR readback failures.
-- retail EXE preserved/restored correctly.
+## OMNI COLD closure v5
+`TIMESHIFTVR_OMNI_COLD_CLOSURE_RESULT_20260827_144128.zip` completed COLD-clean with 32 workers.
 
-User-observed verdict:
-- fish-eye / crooked camera remained.
-- strong tilt remained.
-- shadows still absent.
+Key totals:
+- corpus files 22102.
+- PAIRS 9180 / unique SHA 374.
+- GLT registry rows 436.
+- RTTI method rows 900.
+- SDC files 375 / unique SHA 198.
+- SDC D3D9 blobs 203984.
+- exact donor CRC matches 134.
+- owner-ranking rows 485.
+- cross-version homology rows 122.
 
-Conclusion:
-**the exact shadow-bind intervention executed, but it did not repair visible shadows.** Do not repeat this simple bind hypothesis.
+Strong retail static candidates:
+- `0x003A9652` — STRONG 736: GLT registry + PAIR-slot agreement + string xrefs across dynamic-light/final-combiner families.
+- `0x003A6DEC` — STRONG 642: GLT registry + PAIR-slot agreement across common/shadowmapped families.
+- RTTI virtual-method family includes `0x003A5F10`, `0x003A5F20`, `0x003A74A0`, `0x003A7FB0` across `d3dPASS_BASE`, `DISTORT`, `FORD`, `GLT`, `IMAGE_FILTER`, `PARTICLES`, `PROJ_SHD`, `RAIN`, `WATER`.
 
-## Projection contract defect found after v5.2
-Two concrete contract errors were identified:
-1. host-side LEFT/RIGHT image payload swapping broke physical image/pose/FOV identity;
-2. row-vector RH off-axis projection used the wrong denominator signs.
+These are **strong candidates, not final runtime semantics**. Registry/initialization paths must be separated from virtual methods that actually touch the D3D9 device.
 
-These errors can explain fish-eye/crooked binocular geometry and contaminate visual interpretation of later rendering fixes.
+# FALSIFIED / do not repeat
+- v5.1 high-level `view+0x40` camera mutation.
+- v5.1 per-shader last-LEFT-texture replay.
+- forced Z reflection / main-world-only owner split.
+- host-side image-only eye swap and old projection denominator signs.
+- v5.2 simple exact 1024×2048 D16 bind mirror as the complete visible shadow fix.
+- DP-only exact/resync effect replay on the OLD-GOOD baseline: modes 3/4 damage lighting.
+- another wider DIP/DP/resync/TEX0..3/shadow-state sweep without a new semantic owner: tested widening produced no material visual recovery.
 
-## Current canonical build — v5.3
-Package:
-`TIMESHIFTVR_PROJECTION_IDENTITY_RECOVERY_v5.3.0_30S_ONECLICK.zip`
+# STILL UNKNOWN
+1. Exact SDC multi-group record/key map for all target compiled shaders under the corrected group layout.
+2. Whether donor VS/PS pairs co-reside in the same exact compiled SDC record and with which `keyA/keyB`.
+3. Exact semantics of GLT 43-byte permutation tails around the lighting/shadow families.
+4. Which exact `d3dPASS_*` runtime virtual method(s) touch D3D9 at the missing final-light/effect boundary.
+5. Exact non-mirror gameplay/body producer feeding renderer slot0.
+6. The smallest retail mutation point that restores missing FX while preserving OLD-GOOD stereo and stable lighting.
 
-Static audit: **31 checks PASS**.
+# Current gate — OMNI EXACT CLOSURE v6.1
+The corrected v6.1 parser/closure uses the multi-group SDC layout recovered from v5 evidence and must stay COLD-only.
 
-v5.3 contract:
-- LEFT game image -> LEFT physical XrView pose/FOV.
-- RIGHT game image -> RIGHT physical XrView pose/FOV.
-- off-axis X coefficient: `(l+r)/(r-l)`.
-- off-axis Y coefficient: `(u+d)/(u-d)`.
-- ROW_VIEW_CORRECTED orientation retained.
-- BODY_PLUS_HMD camera lock retained.
-- no host image-only eye swap.
-- no main-world-only owner split.
-- no forced Z reflection.
-- no active RIGHT shadow texture mutation.
-- no Windows mouse injection from HMD.
-- real final backbuffer captured once before desktop SBS overwrite.
-- passive ranking of draws after `RETURN_RIGHT` for later final-light/final-color ownership.
+MISSING FACT: exact SDC group/record map, donor shader co-residence and keys, GLT 43-byte option records, and actual `d3dPASS` runtime methods touching D3D9.
 
-## Parallel generated branch — HOLD
-Package:
-`TIMESHIFTVR_SAFE_PAIR_REPAIR_v5_2_0.zip`
+WHY NOT COLD: N/A; v5 exposed the required invariants and all required evidence is local.
 
-This branch fixes the unsafe v5.1 texture-learning strategy using exact LEFT/RIGHT DIP ordinal and draw-signature matching. In the analyzed first 256 pairs:
-- LEFT DIP count == RIGHT DIP count for 256/256 pairs.
-- 26028 / 26028 sampled LEFT shadow-bound DIP draws had an exact RIGHT draw at the same DIP ordinal with matching primitive data, geometry indices, VS and PS.
+PASS: SDC boundaries/decompression/raw splits validate; donor CRCs map to exact records; GLT tails validate; pass virtual methods separate by real D3D9 COM activity.
 
-This is a useful repair candidate, but it is **not yet canonical** because v5.3 projection identity must be judged first.
+FAIL: invariants fail broadly or runtime ownership remains indistinguishable.
 
-## Current missing fact
-Does v5.3 restore sane physical-eye geometry and HMD orientation while preserving the v4.7.2 same-frame stereo baseline?
+BASELINE MUST HOLD: no game launch, injection, patch, DLL install, or source mutation.
 
-### PASS
-- no fish-eye/crooked binocular geometry caused by eye identity/sign errors;
-- head yaw/pitch/roll behaves coherently;
-- LEFT/RIGHT remain live and distinct;
-- stable same-frame stereo and XR submission remain intact.
+# STOP RULE
+Do **not** create another LIVE missing-FX experiment until v6.1 has either:
+- produced a bounded exact pass owner suitable for one-primary-fact causal mutation; or
+- failed in a way that identifies the next specific COLD missing fact.
 
-If shadows remain absent after this PASS, move to the later final-light/final-color boundary after `RETURN_RIGHT` using the passive backbuffer/draw evidence from v5.3.
-
-### FAIL
-Do not mutate shadows or camera ownership further. Diagnose the remaining projection/camera convention using the smallest causal test.
-
-## Runtime policy
-- v4.7.2 transport is frozen baseline.
-- Visual headset evidence is authoritative for visual quality; automatic counters only prove that an intervention executed.
-- Do not restore v5.1 broad camera/source mutation.
-- Do not restore per-shader last-texture shadow replay.
-- Do not repeat the simple v5.2 shadow-depth bind as if it were still an open hypothesis.
-- Do not reopen broad reverse engineering while v5.3 can answer the next missing fact directly.
+After COLD saturation, any LIVE test must preserve OLD-GOOD stereo/light baseline and mutate one exact semantic pass boundary only, with broad compatible passive harvest around it.
