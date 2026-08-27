@@ -1,110 +1,99 @@
 # TimeShiftVR — NEXT
 
-Updated: 2026-08-25 22:54 +03
+Updated: 2026-08-27 +03
 
-## Current serial gate — v5.3 projection identity recovery
+## Current serial gate — OMNI EXACT CLOSURE v6.1
 
 Canonical package:
-`TIMESHIFTVR_PROJECTION_IDENTITY_RECOVERY_v5.3.0_30S_ONECLICK.zip`
+`TIMESHIFTVR_OMNI_EXACT_CLOSURE_v6.1.0.zip`
 
-The old facade-slot13 COLD bridge is no longer the active project gate. True same-frame OpenXR stereo already exists. The immediate missing fact is whether the remaining fish-eye/crooked/tilted binocular image is caused by the two now-identified projection/eye-identity errors.
+Status: **GENERATED / COLD ONLY / awaiting RESULT**.
 
-## Frozen baseline that must hold
-From v4.7.2 and later stable transport runs:
-- same-frame LEFT/RIGHT re-entry works.
-- distinct live eye images reach OpenXR.
-- OpenXR host publishes real stereo frames.
-- no continuing stack/re-entry/matrix/readback failures are acceptable.
+The 2026-08-25 v5.3 projection-identity gate is historical. The project has since returned to the OLD-GOOD working stereo line and exhausted the useful simple texture-replay variants. The immediate missing fact is now semantic: **which exact compiled SDC/GLT/d3dPASS runtime lane owns the missing lighting/effect boundary?**
 
-v5.3 must not regress this transport while fixing eye identity/projection.
+See:
+- `docs/STATE.md` for current canonical state.
+- `docs/EVIDENCE_LEDGER_20260827.md` for the full 2026-08-27 evidence closure.
 
-## v5.3 exact changes
-Only the projection/identity contract is being corrected:
-1. remove host-side LEFT/RIGHT image payload swap;
-2. keep each game eye bound to its own physical `XrView` pose and FOV;
-3. use row-vector RH off-axis coefficients:
-   - X: `(l+r)/(r-l)`;
-   - Y: `(u+d)/(u-d)`;
-4. retain ROW_VIEW_CORRECTED orientation and BODY_PLUS_HMD camera lock;
-5. remove active shadow mutation;
-6. remove main-world-only/Z-reflection surgery;
-7. capture the real final game backbuffer once before desktop SBS overwrite;
-8. rank D3D9 draws after `RETURN_RIGHT` passively.
+# Frozen baseline that must hold
+- GOG TimeShift 1.02 x86 target identity remains exact.
+- v4.7.2 OLD-GOOD same-frame stereo transport remains the frozen transport baseline.
+- current-best effect-state behavior is OLD-GOOD + DIP exact TEX0+TEX1.
+- no COLD experiment may launch the game, inject, patch, stage a DLL, or mutate the corpus.
 
-Static audit: **31 / 31 checks PASS**.
+# Why v6.1 exists
+The v5 OMNI result corrected a material parser assumption: multi-group SDC metadata is interleaved by group before all zlib payloads.
 
-## Run contract
-Focused runtime window: **30 seconds after true stereo starts**.
+Correct structural model:
+1. `u32 group_count`.
+2. `u32 total_record_count`.
+3. `u32 total_compressed_bytes`.
+4. For every group: `compressed_size`, `record_count`, then that group's per-record `keyA`, `keyB`, `raw_record_size` triplets.
+5. All zlib payloads follow in group order.
 
-During this run:
-- do not press F2/F3/F5;
-- F8 recenter is allowed if needed;
-- do not add a second intrusive capture DLL;
-- let the built-in passive D3D9/XR evidence collector finish and restore the baseline automatically.
+v6.1 must use that structure to close four linked unknowns without LIVE execution:
+- exact compiled D3D9 shader -> SDC record -> `keyA/keyB` identity;
+- donor VS/PS co-residence and record identity;
+- 43-byte GLT permutation-tail validation and lighting/shadow option census;
+- exact `d3dPASS_*` virtual methods with direct `IDirect3DDevice9` COM activity, separated from registry/init methods.
 
-## v5.3 visual PASS
-All of the following should hold:
-- LEFT/RIGHT remain live and distinct;
-- binocular geometry no longer has the v5.2 fish-eye/crooked character attributable to eye identity/sign errors;
-- head yaw/pitch/roll is coherent enough to continue owner work;
-- no catastrophic black wedges / eye desync regression;
-- same-frame stereo transport stays intact.
+# Exact experiment contract
 
-Shadows are **not required** for projection PASS. Shadow repair is a separate downstream gate.
+MISSING FACT: exact SDC group/record map, donor shader co-residence and keys, GLT 43-byte option records, actual `d3dPASS` runtime methods touching D3D9.
 
-## v5.3 structural PASS
-Automatic result should show:
-- true stereo starts;
-- same-frame pair counter grows;
-- zero or bounded/understood stack/re-entry/matrix failures;
-- XR publication/readback remains healthy;
-- LEFT image remains LEFT through submission and RIGHT remains RIGHT;
-- final backbuffer capture is present;
-- passive post-`RETURN_RIGHT` draw ranking is populated.
+WHY NOT COLD: N/A; v5 exposed the required invariants and all required files are local.
 
-## If v5.3 VISUAL + STRUCTURAL PASS
-Freeze projection identity as the new baseline.
+PASS: SDC boundaries/decompression/raw splits validate; donor CRCs resolve to exact records; GLT tails validate; pass virtual methods are separated by real D3D9 COM activity.
 
-Then the next missing fact becomes:
+FAIL: invariants fail broadly or ownership remains indistinguishable.
 
-`where does the final lighting/shadow/color contribution get consumed or composed after RETURN_RIGHT?`
+BASELINE MUST HOLD: no game launch, injection, patch, DLL install, or source mutation.
 
-Use the passive v5.3 evidence first:
-- final pre-SBS backbuffer;
-- ranked draws after `RETURN_RIGHT`;
-- render-target/texture/state history;
-- exact shader context.
+# What to inspect in the RESULT
+Rank the result by **independent evidence intersection**, not by one score alone:
+1. exact donor CRC -> compiled shader -> SDC record/key evidence;
+2. GLT slot/descriptor/permutation agreement;
+3. RTTI class + vtable method identity;
+4. direct D3D9 COM call activity from that method;
+5. callgraph/xref neighborhood linking runtime pass execution rather than registration only;
+6. cross-version homology as supporting evidence, never retail proof by itself.
 
-Do **not** immediately repeat the old one-texture mirror.
+A candidate is not promoted merely because it has many strings or registry references.
 
-A later shadow repair may reuse the **safe exact-pair** idea from `TIMESHIFTVR_SAFE_PAIR_REPAIR_v5_2_0`, but only after the final-light/final-color owner is identified.
+# PASS routing
+If v6.1 produces one or a small bounded set of runtime pass owners with independent support:
+- freeze all v6.1 exact maps into `PROVEN`;
+- choose **one PRIMARY FACT** for the next LIVE test;
+- mutate only one exact semantic pass boundary;
+- preserve OLD-GOOD stereo/camera and stable lighting;
+- collect broad compatible passive secondary harvest: draw ordinal, RT/DS, textures, VS/PS, constants, state transitions, callsite and pass identity.
 
-## If v5.3 STRUCTURAL PASS but VISUAL FAIL
-Projection/camera convention remains the blocker.
+Before that LIVE, write exactly:
+- MISSING FACT
+- WHY NOT COLD
+- PASS
+- FAIL
+- BASELINE MUST HOLD
 
-Next experiment must be one smaller causal probe against the remaining convention, not a new shadow or hand/controller feature.
+If those five lines cannot be filled honestly, do not build the experiment.
 
-Candidates should be chosen only from evidence produced by v5.3. Do not resurrect broad camera rewrites.
+# FAIL routing
+If v6.1 cannot validate the corrected SDC layout or cannot distinguish runtime pass methods:
+- do not launch a new LIVE sweep;
+- inspect the failing invariant and extend the same COLD lineage;
+- preserve the v5 OMNI corpus and ranking tables;
+- REUSE -> ADAPT -> FIX -> EXTEND the v6.1 analyzer rather than create an unrelated oracle.
 
-## If v5.3 STRUCTURAL FAIL
-Stop and repair the transport/build/runtime failure while preserving the v4.7.2 baseline contract. Do not interpret headset appearance from a structurally invalid run.
-
-## Parallel branch — preserve, do not promote yet
-`TIMESHIFTVR_SAFE_PAIR_REPAIR_v5_2_0`
-
-Useful proven design facts:
-- 256/256 analyzed pairs had equal LEFT/RIGHT DIP counts.
-- 26028/26028 sampled LEFT shadow-bound draws had an exact RIGHT draw at the same DIP ordinal with matching draw signature.
-- repair is draw-ordinal/signature based, not per-shader last-texture based.
-
-Status: **HOLD pending v5.3 projection verdict.**
-
-## Explicitly not next
+# Explicitly not next
 Do not:
-- restore v5.1 high-level `view+0x40` mutation;
-- restore v5.1 per-shader texture replay;
-- repeat the v5.2 simple exact shadow-depth mirror as the whole shadow solution;
-- force Z reflection;
-- swap only image payloads at the XR host;
-- reopen broad SDC/Ghidra archaeology;
-- start controller/hand integration before projection and final-light ownership are stable.
+- repeat v5.1 broad camera/source mutation;
+- repeat per-shader last-texture replay;
+- repeat the v5.2 one-shadow-bind mirror as the complete fix;
+- revive host image-only eye swapping or old projection-sign compensation;
+- run DP-only exact/resync effect replay again; it damaged lighting in the visual sweep;
+- generate another wider DIP/DP/resync/TEX0..3 texture-state sweep without a newly identified semantic owner;
+- start controller/weapon integration while the render-pass missing-FX boundary is unresolved;
+- treat donor names, RTTI names, PAIRS proximity, or registry functions as final retail runtime proof without independent intersection.
+
+# Current STOP RULE
+**No new missing-FX LIVE until the v6.1 COLD exact closure is judged.**
