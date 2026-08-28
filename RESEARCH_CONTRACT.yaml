@@ -5,10 +5,11 @@
   "workflow": "docs/WORKFLOW.md",
   "active_gate_anchor": "Current gate",
   "protected_baseline_anchor": "v4.7.2 OLD-GOOD",
-  "evidence_globs": [
-    "docs/EVIDENCE_LEDGER_*.md",
-    "research/*EVIDENCE*.md"
-  ],
+  "claim_graph": "CLAIM_GRAPH.json",
+  "active_claim_ids": ["TS-FX-PASS-OWNER"],
+  "evidence_globs": ["docs/EVIDENCE_LEDGER_*.md", "research/*EVIDENCE*.md"],
   "pending_evidence_refs": [],
-  "block_live_when_pending": true
+  "block_live_when_pending": true,
+  "require_claim_id_for_changed_experiments": true,
+  "require_headers_for_new_evidence_delta": true
 }
