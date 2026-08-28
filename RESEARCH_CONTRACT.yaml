@@ -1,8 +1,9 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "project": "TimeShiftVR",
   "canonical_state": "docs/STATE.md",
   "workflow": "docs/WORKFLOW.md",
+  "current_issue_number": 2,
   "active_gate_anchor": "Current gate",
   "protected_baseline_anchor": "v4.7.2 OLD-GOOD",
   "claim_graph": "CLAIM_GRAPH.json",
@@ -10,6 +11,5 @@
   "evidence_globs": ["docs/EVIDENCE_LEDGER_*.md", "research/*EVIDENCE*.md"],
   "pending_evidence_refs": [],
   "block_live_when_pending": true,
-  "require_claim_id_for_changed_experiments": true,
-  "require_headers_for_new_evidence_delta": true
+  "require_headers_for_changed_evidence_delta": true
 }
