@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "project": "TimeShiftVR",
+  "claims": [
+    {"id":"TS-FX-PASS-OWNER","status":"ACTIVE","summary":"identify the exact semantic D3D9 pass owner for missing lights rain particles smoke explosions and final effects","aliases":["exact missing FX pass ownership"],"fingerprints":["missing FX semantic pass owner"],"evidence_ids":["TS-EV-LEDGER-20260827","TS-EV-OMNI"]},
+    {"id":"TS-OLDGOOD-STEREO","status":"PROVEN","summary":"v4.7.2 OLD-GOOD true same-frame OpenXR stereo transport baseline","aliases":["OLD-GOOD stereo"],"fingerprints":["v4.7.2 old good stereo"],"evidence_ids":["TS-EV-LEDGER-20260827"]},
+    {"id":"TS-DP-ONLY-REPLAY","status":"FALSIFIED","summary":"DP-only exact or resynchronized TEX0 TEX1 replay as the missing FX fix","aliases":["DP exact resync replay"],"fingerprints":["DP only replay"],"evidence_ids":["TS-EV-LEDGER-20260827"]},
+    {"id":"TS-WIDENED-REPLAY","status":"FALSIFIED","summary":"wider DIP plus DP texture and shadow-state replay without a new semantic owner","aliases":["widened replay"],"fingerprints":["widened DIP DP replay"],"evidence_ids":["TS-EV-LEDGER-20260827"]},
+    {"id":"TS-VIEW-STACK-FOUNDATION","status":"PROVEN","summary":"renderer View stack header slot zero push copy and dynamic mouse-look write foundation","aliases":["View stack slot0 foundation"],"fingerprints":["View stack slot0"],"evidence_ids":["TS-EV-LEDGER-20260827"]},
+    {"id":"TS-GAMEPLAY-BODY-PRODUCER","status":"PARKED","summary":"identify the exact non-mirror gameplay body producer feeding renderer View slot zero","aliases":["non mirror gameplay body producer"],"fingerprints":["gameplay body producer slot0"],"evidence_ids":[]}
+  ],
+  "evidence": [
+    {"id":"TS-EV-LEDGER-20260827","class":"EVIDENCE_LEDGER","ref":"docs/EVIDENCE_LEDGER_20260827.md","repo_path":"docs/EVIDENCE_LEDGER_20260827.md"},
+    {"id":"TS-EV-OMNI","class":"RESULT","ref":"TIMESHIFTVR_OMNI_COLD_CLOSURE_RESULT_20260827_144128.zip"}
+  ]
+}
