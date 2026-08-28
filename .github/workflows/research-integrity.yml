@@ -28,5 +28,11 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python tools/research_integrity.py --base "$BASE_SHA"
-      - name: Attack the integrity checker
+      - name: Verify changed research document identity
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: python tools/research_doc_integrity.py --base "$BASE_SHA"
+      - name: Attack the research integrity checker
         run: python tools/research_integrity_selftest.py
+      - name: Attack the research document gate
+        run: python tools/research_doc_integrity_selftest.py
