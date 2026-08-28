@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "TimeShiftVR",
   "claims": [
-    {"id":"TS-FX-PASS-OWNER","status":"ACTIVE","summary":"identify the exact semantic D3D9 pass owner for missing lights rain particles smoke explosions and final effects","aliases":["exact missing FX pass ownership"],"fingerprints":["missing FX semantic pass owner"],"evidence_ids":["TS-EV-LEDGER-20260827","TS-EV-OMNI"]},
+    {"id":"TS-FX-PASS-OWNER","status":"ACTIVE","summary":"identify the exact semantic D3D9 pass owner for missing lights rain particles smoke explosions and final effects","aliases":["exact missing FX pass ownership"],"fingerprints":["missing FX semantic pass owner"],"state_anchor":"Current gate — OMNI EXACT CLOSURE v6.1","evidence_ids":["TS-EV-LEDGER-20260827","TS-EV-OMNI"]},
     {"id":"TS-OLDGOOD-STEREO","status":"PROVEN","summary":"v4.7.2 OLD-GOOD true same-frame OpenXR stereo transport baseline","aliases":["OLD-GOOD stereo"],"fingerprints":["v4.7.2 old good stereo"],"evidence_ids":["TS-EV-LEDGER-20260827"]},
     {"id":"TS-DP-ONLY-REPLAY","status":"FALSIFIED","summary":"DP-only exact or resynchronized TEX0 TEX1 replay as the missing FX fix","aliases":["DP exact resync replay"],"fingerprints":["DP only replay"],"evidence_ids":["TS-EV-LEDGER-20260827"]},
     {"id":"TS-WIDENED-REPLAY","status":"FALSIFIED","summary":"wider DIP plus DP texture and shadow-state replay without a new semantic owner","aliases":["widened replay"],"fingerprints":["widened DIP DP replay"],"evidence_ids":["TS-EV-LEDGER-20260827"]},

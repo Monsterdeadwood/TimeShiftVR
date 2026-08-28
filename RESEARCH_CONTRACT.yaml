@@ -11,5 +11,7 @@
   "evidence_globs": ["docs/EVIDENCE_LEDGER_*.md", "research/*EVIDENCE*.md"],
   "pending_evidence_refs": [],
   "block_live_when_pending": true,
-  "require_headers_for_changed_evidence_delta": true
+  "require_headers_for_changed_evidence_delta": true,
+  "require_research_doc_identity_for_changes": true,
+  "require_active_claim_state_anchor": true
 }
