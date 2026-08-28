@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "project": "TimeShiftVR",
+  "canonical_state": "docs/STATE.md",
+  "workflow": "docs/WORKFLOW.md",
+  "active_gate_anchor": "Current gate",
+  "protected_baseline_anchor": "v4.7.2 OLD-GOOD",
+  "evidence_globs": [
+    "docs/EVIDENCE_LEDGER_*.md",
+    "research/*EVIDENCE*.md"
+  ],
+  "pending_evidence_refs": [],
+  "block_live_when_pending": true
+}
