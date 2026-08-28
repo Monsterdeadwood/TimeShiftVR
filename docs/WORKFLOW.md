@@ -51,29 +51,39 @@ When source/SDK/debug/beta/PDB/RTTI/donor corpus exists:
 Chat branches may explore. Repository truth must converge before the next intrusive mutation.
 
 ## Claim / evidence graph discipline
-`RESEARCH_CONTRACT.yaml` tells tools and TABs where canonical state lives and which claim IDs are active. `CLAIM_GRAPH.json` is the machine-readable registry of research questions and evidence.
+`RESEARCH_CONTRACT.yaml` tells tools and TABs where canonical state lives, which GitHub Issue is CURRENT and which claim IDs are active. `CLAIM_GRAPH.json` is the machine-readable registry of research questions and evidence.
 
 Before changing or creating experiment code:
 1. Search `CLAIM_GRAPH.json` for the same question, aliases and fingerprints.
-2. Reuse the existing `CLAIM_ID` when the question is materially the same. Do not rename the same research question into a fresh claim.
-3. If no claim fits, add one claim with a narrow summary and status before adding experiment code.
+2. Reuse the existing `CLAIM_ID` when the question is materially the same.
+3. If no claim fits, add one narrow claim before adding experiment code.
 4. Put exactly one claim ID in `experiments/<name>/CLAIM_ID.txt`.
-5. LIVE-capable work still requires the exact five-line `PREFLIGHT_5_LINES.txt`.
+5. Put exactly one class in `experiments/<name>/EXPERIMENT_CLASS.txt`: `COLD`, `PASSIVE_LIVE`, `CAUSAL_LIVE`, or `BUILD_LIVE`.
+6. Put exactly one primary fact in `experiments/<name>/PRIMARY_FACT.txt` as `PRIMARY_FACT: <one discriminating fact>`.
+7. Every non-`COLD` class additionally requires the exact five-line `PREFLIGHT_5_LINES.txt`.
+
+Do not infer LIVE/COLD from a folder name. `EXPERIMENT_CLASS.txt` is authoritative.
 
 Claim states:
 - `ACTIVE` / `PENDING` = current work may target it.
 - `QUEUED` / `PARKED` = retained but not the current mutation lane.
 - `PROVEN` / `FALSIFIED` / `SUPERSEDED` = closed for ordinary experiment reuse.
 
-Do not silently revive a closed claim. Either create a genuinely different claim or add `REOPEN_RATIONALE.md` explaining the new contradictory evidence that justifies reopening it.
+Do not silently revive a closed claim. Either create a genuinely different claim or add `REOPEN_RATIONALE.md` containing both:
 
-For a new `RESULT_DELTA` or `EVIDENCE_DELTA`, first register a unique evidence ID in `CLAIM_GRAPH.json`, link it from the owning claim, then put both headers near the top of the delta:
+```text
+WHY_REOPEN: <why the previous closed verdict is no longer sufficient>
+NEW_EVIDENCE: <the concrete new contradictory evidence>
+```
+
+For every added or modified `RESULT_DELTA` / `EVIDENCE_DELTA`, register a unique evidence ID in `CLAIM_GRAPH.json`, link it from the owning claim, then put both headers near the top:
 
 ```text
 EVIDENCE_ID: <project evidence id>
 CLAIM_ID: <owning claim id>
 ```
 
-One result may inform several future hypotheses, but its primary evidence ID must have one explicit owning claim. Donor/source evidence remains candidate-generation evidence unless target-specific proof promotes it.
+## CURRENT Issue synchronization
+`RESEARCH_CONTRACT.yaml` declares `current_issue_number`. CI verifies that the configured Issue is open, starts with `CURRENT:`, names the canonical STATE/SYNC path, contains every active `CLAIM_ID`, and is the only open Issue claiming `CURRENT:`.
 
-If CI reports a duplicate-claim fingerprint or similarity warning, reconcile with the existing claim before inventing another experiment. The goal is one durable identity per research question, not one identity per package name.
+If CI reports duplicate-claim similarity, reconcile with the existing claim before inventing another experiment. One durable identity per research question, not one identity per package name.
