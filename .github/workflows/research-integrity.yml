@@ -28,3 +28,5 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python tools/research_integrity.py --base "$BASE_SHA"
+      - name: Attack the integrity checker
+        run: python tools/research_integrity_selftest.py
