@@ -83,6 +83,26 @@ EVIDENCE_ID: <project evidence id>
 CLAIM_ID: <owning claim id>
 ```
 
+## Research document identity
+Any new or changed `research/*.md` must declare exactly what kind of document it is with a top-level header:
+
+```text
+RESEARCH_DOC_CLASS: EVIDENCE | CONVERGENCE | NOTE | ARCHIVE | INDEX | DESIGN | SYNC
+```
+
+For `EVIDENCE` and `CONVERGENCE`, the document must also declare registered `EVIDENCE_ID` and `CLAIM_ID`, and the evidence `repo_path` in `CLAIM_GRAPH.json` must point back to that file.
+
+Authoritative research evidence must not float outside the canonical state. It must satisfy one of these conditions:
+- canonical STATE/SYNC already names the document;
+- canonical STATE/SYNC is updated in the same change-set;
+- the document is listed in `pending_evidence_refs` and its owning claim is `PENDING`.
+
+Pending evidence blocks new LIVE-capable work when `block_live_when_pending=true`.
+
+Every claim listed by `active_claim_ids` must carry a `state_anchor` that appears in canonical STATE/SYNC. This prevents the machine graph from remaining on yesterday's gate after the human state has advanced.
+
+`ARCHIVE` documents may declare `SUPERSEDED_BY: <repo path>`; if supplied, the target must exist.
+
 ## CURRENT Issue synchronization
 `RESEARCH_CONTRACT.yaml` declares `current_issue_number`. CI verifies that the configured Issue is open, starts with `CURRENT:`, names the canonical STATE/SYNC path, contains every active `CLAIM_ID`, and is the only open Issue claiming `CURRENT:`.
 
