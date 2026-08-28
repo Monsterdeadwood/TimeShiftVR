@@ -49,3 +49,31 @@ When source/SDK/debug/beta/PDB/RTTI/donor corpus exists:
 - GitHub is the persistent project truth after convergence.
 
 Chat branches may explore. Repository truth must converge before the next intrusive mutation.
+
+## Claim / evidence graph discipline
+`RESEARCH_CONTRACT.yaml` tells tools and TABs where canonical state lives and which claim IDs are active. `CLAIM_GRAPH.json` is the machine-readable registry of research questions and evidence.
+
+Before changing or creating experiment code:
+1. Search `CLAIM_GRAPH.json` for the same question, aliases and fingerprints.
+2. Reuse the existing `CLAIM_ID` when the question is materially the same. Do not rename the same research question into a fresh claim.
+3. If no claim fits, add one claim with a narrow summary and status before adding experiment code.
+4. Put exactly one claim ID in `experiments/<name>/CLAIM_ID.txt`.
+5. LIVE-capable work still requires the exact five-line `PREFLIGHT_5_LINES.txt`.
+
+Claim states:
+- `ACTIVE` / `PENDING` = current work may target it.
+- `QUEUED` / `PARKED` = retained but not the current mutation lane.
+- `PROVEN` / `FALSIFIED` / `SUPERSEDED` = closed for ordinary experiment reuse.
+
+Do not silently revive a closed claim. Either create a genuinely different claim or add `REOPEN_RATIONALE.md` explaining the new contradictory evidence that justifies reopening it.
+
+For a new `RESULT_DELTA` or `EVIDENCE_DELTA`, first register a unique evidence ID in `CLAIM_GRAPH.json`, link it from the owning claim, then put both headers near the top of the delta:
+
+```text
+EVIDENCE_ID: <project evidence id>
+CLAIM_ID: <owning claim id>
+```
+
+One result may inform several future hypotheses, but its primary evidence ID must have one explicit owning claim. Donor/source evidence remains candidate-generation evidence unless target-specific proof promotes it.
+
+If CI reports a duplicate-claim fingerprint or similarity warning, reconcile with the existing claim before inventing another experiment. The goal is one durable identity per research question, not one identity per package name.
