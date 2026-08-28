@@ -3,7 +3,7 @@ from __future__ import annotations
 import hashlib, json, tempfile
 from pathlib import Path
 import research_integrity as ri
-ROOT=Path(__file__).resolve().parents[1]; CLOSED={"PROVEN","FALSIFIED","SUPERSEDED"}; APPROVED={"7a35741e525755ccefc3d4b79c32aba420bb9bd0","680cea4e2d868cfcc96764eb72e94038625b55ed"}
+ROOT=Path(__file__).resolve().parents[1]; CLOSED={"PROVEN","FALSIFIED","SUPERSEDED"}; APPROVED={"edd962ecf5b58a39156efb8ce1634e03bc255196","680cea4e2d868cfcc96764eb72e94038625b55ed","7a35741e525755ccefc3d4b79c32aba420bb9bd0"}
 def die(s): raise SystemExit("SELFTEST_FAIL: "+s)
 def blob(p):
  d=p.read_bytes(); return hashlib.sha1(b"blob "+str(len(d)).encode()+b"\0"+d).hexdigest()
