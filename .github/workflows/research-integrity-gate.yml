@@ -1,0 +1,39 @@
+name: Research Integrity Gate
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches:
+      - 'cold/**'
+      - 'live/**'
+
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate PR promotion path
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          set -euo pipefail
+          head='${{ github.head_ref }}'
+          if [[ "$head" != promote/* ]]; then echo "::error::PRs into main must originate from promote/*, not $head"; exit 1; fi
+          git fetch origin '${{ github.base_ref }}' --quiet
+          files="$(git diff --name-only "origin/${{ github.base_ref }}...HEAD")"
+          printf '%s\n' "$files"
+          grep -Eq '^docs/PROMOTIONS/[^/]+\.md$' <<<"$files" || { echo '::error::Promotion PR must include a docs/PROMOTIONS/*.md record.'; exit 1; }
+          if grep -Eq '^docs/COLD/' <<<"$files"; then echo '::error::Promotion PR must not wholesale-import docs/COLD material.'; exit 1; fi
+      - name: Protect canonical files on COLD/LIVE pushes
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          set -euo pipefail
+          before='${{ github.event.before }}'; after='${{ github.sha }}'
+          if [[ "$before" == '0000000000000000000000000000000000000000' ]]; then git fetch origin main --quiet; base="$(git merge-base HEAD origin/main)"; range="$base..HEAD"; else range="$before..$after"; fi
+          files="$(git diff --name-only "$range")"; printf '%s\n' "$files"
+          forbidden='^(LATEST_SYNC\.md|CLAIM_GRAPH\.json|RESEARCH_CONTRACT\.yaml|docs/(PROVEN|FALSIFIED|STATE|SYNC|NEXT|ACTIVE_CLAIMS|EVIDENCE_BOUNDARY|BRANCH_PROMOTION_POLICY)\.md|docs/PORTFOLIO_SYNC_[^/]+\.md)$'
+          if grep -Eq "$forbidden" <<<"$files"; then echo '::error::COLD/LIVE branch attempted to modify canonical truth/control files. Use docs/COLD shadow notes or a fresh promote/* branch.'; exit 1; fi
