@@ -4,7 +4,7 @@ Updated: 2026-09-08 +03
 
 Repository: `Monsterdeadwood/TimeShiftVR`
 Active claim: `TS-FX-PASS-OWNER`
-Current gate: `EYE_DONE / final-color transaction ownership`
+Current R3 gate: `View* -> DAT_00FCACD8 +0x9C -> FX queue/list/membership -> consumer`
 
 ## Frozen target
 - GOG TimeShift 1.02 x86.
@@ -21,124 +21,71 @@ Current gate: `EYE_DONE / final-color transaction ownership`
 
 Current-best effect state remains `OLD-GOOD + DIP exact TEX0+TEX1`.
 
-## Retained historical closures
+## Retained closures
 Do not reopen without contradictory exact evidence:
-- broad high-level View mutation rejected;
-- per-shader last-LEFT-texture replay rejected;
-- v5.2 exact D16 bind mirror executed but was visually insufficient;
-- DP-only exact/resync modes damage lighting;
-- wider generic DIP/DP/TEX/shadow-state replay produced no material recovery;
-- host image-only eye swap / old projection-sign compensation rejected;
-- View-stack foundation around `root+0x618`, slot0 `root+0x620`, and generic View copy `0x00956680` retained.
+- broad live main-View mutation rejected;
+- generic last-LEFT texture replay rejected;
+- exact D16 bind mirror visually insufficient as a complete fix;
+- DP-only exact/resync damages lighting;
+- wider generic DIP/DP/TEX/shadow-state replay gave no material recovery;
+- literal native secondary/mirror semantics are not a valid XR RIGHT architecture;
+- v6.1 AS-IS is not an admissible current verdict source.
 
-## 2026-09-08 convergence correction
-The former canonical serial gate `TIMESHIFTVR_OMNI_EXACT_CLOSURE_v6.1.0` is stale.
+## R3 exact structural model
+`0x0067F4F0` is the proven inner renderer and accepts the high-level Saber `View*` as arg1. Synthetic RIGHT currently reuses LEFT/main `View*` while late backend matrices are made eye-specific.
 
-Later preserved source audit established that v6.1 AS-IS is not an admissible scientific verdict source due unconditional PASS reporting, raw-byte function slicing, weak direct-COM owner heuristics and incomplete exact-tail semantics. Preserve useful SDC ideas only through corrected decoded-function lineage. Do not run v6.1 merely because an older document says `awaiting RESULT`.
+`DAT_00FCACD8` is structurally tied to scene/render-list ownership:
+```text
++0x8C object register/enter
++0x90 object unregister/leave
++0x28/+0x2C per-View path
+MAIN mask = 1
+secondary mask = 1 << ViewStackIndex
+```
 
-## Current exact render-transaction model
-Synthetic stereo duplicates the exact inner renderer `0x0067F4F0`.
+The same manager region owns objects carrying rain, distortion, shadow-map, mirror and light-related flags.
 
-Exact-retail parent/CFG evidence places additional native work after that inner call in `0x0067F100`, including:
+MAIN additionally performs:
 ```text
 stage10
-+0x78
++0x78()
 +0x9C(View)
-+0x7C = 0x00680EF0
++0x7C() = 0x00680EF0
 ```
 
-Recovered vtable anchors:
+Recovered vtable base: `0x00D8D810`.
+
+## Current FIRST_MISSING_EDGE
 ```text
-base 0x00D8D810
-+0x2C -> 0x0067F4F0
-+0x78 cell 0x00D8D888
-+0x9C cell 0x00D8D8AC
-+0x7C -> 0x00680EF0
+View*
+  -> DAT_00FCACD8 +0x9C(View)
+  -> FX queue/list/membership
+  -> consumer
 ```
 
-Preserved v6.13 runtime lineage shows:
-- 10455 / 10455 RIGHT returns are followed by native `0x00680EF0` and later `425BF981 / 6FDF4543` in the same frame;
-- in 10454 / 10455 stereo-return frames that final draw is the last D3D9 draw, modulo one multi-pair accounting case;
-- representative post-RIGHT tail = 2 rain + 14 overlay/HUD + 1 final fullscreen draw.
+Required RIGHT semantic input: `rightView = 0x0067F4F0 arg1`.
 
-Therefore `0x0067F4F0 RET` is `INNER_DONE`, not established `EYE_DONE`.
+UNKNOWN:
+- exact `+0x78/+0x9C/+0x7C` semantics;
+- concrete queue/list structures;
+- whether membership is per-View/per-slot/shared;
+- destructive-vs-reusable queue behavior;
+- exact rain/distortion/light/final consumers.
 
-## Final-color ownership correction
-Preserved stereo counters:
-```text
-425 / 09AF:
-  eye0 64
-  eye1 10455
-  eye2 10455
+## Borrowed sibling runtime evidence
+The late EYE_DONE/final-color line remains valid evidence but is not the R3 primary owner.
 
-425 / 6FDF:
-  eye0 10519
-  eye1 0
-  eye2 0
-```
+Preserved facts include:
+- native work continues after `0x0067F4F0`;
+- current wrapper clears eye ownership before late rain/overlay/final work;
+- final `425/6FDF` is eye0-only in preserved v6.13 lineage;
+- older captures place strong final composition on the real backbuffer;
+- `DELAY_RIGHT_TEARDOWN_ONLY` remains unexecuted.
 
-Native order places `09AF` before late FX and `6FDF` after them. The older `simple shader branch divergence` model is rejected.
-
-Use:
-`FINAL_COLOR_TRANSACTION_OWNERSHIP_DIVERGENCE`.
-
-## Current premature-teardown fact pattern
-At current RIGHT return, the stereo wrapper clears:
-```text
-eye_phase = 0
-stereo_active = 0
-RT = real backbuffer
-```
-
-Saber then continues native late work. Immediately before final `6FDF`, it requests the real backbuffer at caller RVA `0x0039C4F6`.
-
-Existing SetRenderTarget routing already knows:
-```text
-stereo_active && requested == backbuffer:
-  eye1 -> private LEFT RT
-  eye2 -> private RIGHT RT
-```
-
-Actual private surfaces on the preserved run:
-- LEFT `0x01502FC0`;
-- RIGHT `0x01502A20`;
-- BACK `0x01502480`.
-
-Older `0x0FC861A0 / 0x0FC86620` values are Saber internal surfaces and are not private VR-eye identity.
-
-## Independent older RESULT support
-`TIMESHIFTVR_PROJECTION_IDENTITY_RECOVERY_RESULT_20260826_002808.zip` records 3234 completed RIGHT returns and exactly 3234 post-RIGHT final `425/6FDF` fullscreen draws to the real backbuffer. Its pre-SBS final backbuffer image contains strong rain/final composition missing from saved private eye images.
-
-This independently supports a late transaction-boundary defect rather than XR readback failure.
+Treat these as `BORROWED_EVIDENCE` under the cross-role law. They constrain where R3-owned queues are consumed but do not authorize an R3 runtime canary.
 
 ## Orthogonal shadow/cache line
-Exact-retail shadow/light producer/cache ownership around `0x006E6220 -> 0x006EB650 -> 0x006EBB40 -> 0x007C7000 -> 0x007C7470` remains a separate defect.
-
-A preserved one-shot TS-LIVE-005 result mechanically restored a native RIGHT bind -> 102 draws -> cleanup transaction for one selected pair after one cache miss. That is not a sustained visual verdict and does not replace the EYE_DONE gate.
-
-## Active R3 line
-Branch: `cold/r3/latefx-ownership`
-Shadow note: `docs/COLD/R3_EYE_DONE_TRANSACTION_SYNC_20260908.md`
-Role: R3 structural red-team.
-
-R3 owns:
-- exact EYE_DONE boundary after `0x0067F4F0`;
-- `+0x78 / +0x9C(View) / +0x7C` ownership;
-- FX queue/list/membership lifetime;
-- destructive-vs-reusable queue behavior before any future tail duplication.
-
-R3 does not own a competing implementation build.
-
-## Active R4 line
-Branch: `cold/r4/sidecar-ownership`.
-R4 remains separate and unbound. Do not collapse sidecar/replacement ownership into the current native Saber transaction question.
-
-## Unexecuted causal candidate
-`DELAY_RIGHT_TEARDOWN_ONLY` is a narrow future discriminator, not an accepted RESULT.
-
-Its conceptual isolation is to preserve all native execution counts and change only whether the single already-existing natural late tail remains owned by RIGHT long enough for native backbuffer routing to reach the private RIGHT RT.
-
-No accepted execution result exists for that canary.
+Exact-retail shadow activation around `0x006EB650` has a generation/lastApplied cache gate. One-shot TS-LIVE-005 mechanically restored a native RIGHT bind -> 102 draws -> cleanup transaction. This stays structural evidence, not a universal missing-FX fix.
 
 ## Current status
 ```text
@@ -150,10 +97,11 @@ VALID_FRESH_LIVE_TICKET = NONE
 ## STOP RULE
 - no v6.1 AS-IS;
 - no new generic OMNI/pass-ranking analyzer;
-- no repeat of same-frame stereo proof;
-- no generic DIP/DP/TEX/state replay;
+- no repeat of generic texture/state replay;
 - no blind second `0x006E6220`;
+- no native secondary bit for XR RIGHT;
 - no whole `0x0067F100 x2` as first repair;
-- no manual `6FDF` replay as primary repair;
+- no rightView LIVE before exact View convention + membership prep closure;
 - no late-tail duplication before queue/temporal ownership closure;
+- no promotion of sibling EYE_DONE/680EF0 runtime ownership into R3 without independent closure;
 - no executable R3 LIVE without a fresh implementation-owner ticket and exactly five causal preflight lines.

@@ -3,9 +3,9 @@
 Native VR integration research for **TimeShift / Saber3D**.
 
 ## Current status
-**ACTIVE — true same-frame OpenXR stereo is proven; the current renderer gate is exact native EYE_DONE / final-color transaction ownership.**
+**ACTIVE — true same-frame OpenXR stereo is proven; the current R3 renderer gate is exact per-View scene/FX ownership.**
 
-The project does not need another generic texture replay or another OMNI pass-ranking sweep. The working stereo transport is already real; the remaining high-value question is why Saber's natural late rain/overlay/final-color transaction executes after the synthetic RIGHT inner render has already released eye ownership.
+The project does not need another generic texture replay or another OMNI pass-ranking sweep. The working stereo transport is real. The current R3 question is where Saber turns a high-level `View*` into the FX queue/list/membership consumed by rain, distortion, light and related passes.
 
 ## Frozen retail target
 - GOG TimeShift 1.02 x86.
@@ -20,57 +20,58 @@ The project does not need another generic texture replay or another OMNI pass-ra
 - physical Quest IPD / asymmetric per-eye FOV.
 - real binocular content reaches the headset.
 
-Current-best effect state remains:
-`OLD-GOOD + DIP exact TEX0+TEX1`.
+Current-best effect state remains `OLD-GOOD + DIP exact TEX0+TEX1`.
 
-## Current renderer model
-The exact inner renderer is `0x0067F4F0`.
+## Current R3 renderer model
+The exact inner renderer is `0x0067F4F0`; arg1 is the high-level Saber `View*`. Current synthetic RIGHT reuses the same `View*` as LEFT.
 
-Preserved execution/static evidence now supports:
+The current owner surface is:
 ```text
-LEFT inner 0x0067F4F0
-RIGHT inner 0x0067F4F0
-RETURN_RIGHT
-  ↓
-native parent continues
-  ↓
-0x00680EF0 / late view update
-  ↓
-rain / overlays / late FX
-  ↓
-425BF981 / 6FDF4543 final
-  ↓
-output
+View*
+  -> DAT_00FCACD8
+     +0x28/+0x2C per-View preparation
+     +0x78 -> +0x9C(View) -> +0x7C MAIN bracket
+  -> FX queue/list/membership
+  -> consumer
 ```
 
-The current wrapper clears `eye_phase` / `stereo_active` at `RETURN_RIGHT`, before that natural finalization. Therefore the current active claim is no longer “which d3dPASS name owns FX?” but the exact semantic boundary and state ownership of the late transaction.
+`DAT_00FCACD8 +0x8C/+0x90` are structurally tied to object registration/unregistration, and the managed object families include rain, distortion, shadow-map, mirror and light-related flags.
 
-Canonical ledger term:
-`FINAL_COLOR_TRANSACTION_OWNERSHIP_DIVERGENCE`.
+### Current FIRST_MISSING_EDGE
+```text
+View*
+  -> DAT_00FCACD8 +0x9C(View)
+  -> FX queue/list/membership
+  -> consumer
+```
 
-## Important orthogonal defect
-A separate exact-retail shadow/light activation cache exists around `0x006EB650` generation/lastApplied state. A preserved one-shot TS-LIVE-005 causal result mechanically restored the native RIGHT shadow transaction for one selected pair.
+Required RIGHT semantic input: `rightView = 0x0067F4F0 arg1`.
 
-That does not prove the late rain/final-color issue is solved. Keep shadow-cache and EYE_DONE defects separate.
+## Borrowed late-tail evidence
+A separate sibling/runtime line proves that native late rain/overlay/final work continues after the current RIGHT inner return and that the wrapper releases eye ownership too early for final `425/6FDF` in the preserved lineage.
+
+That evidence is retained as a strong constraint, but under the cross-role law it is `BORROWED_EVIDENCE`, not the R3 PRIMARY gate. `DELAY_RIGHT_TEARDOWN_ONLY` remains unexecuted.
+
+## Orthogonal shadow defect
+A preserved one-shot TS-LIVE-005 cache miss restored a native RIGHT shadow bind -> 102 draws -> cleanup transaction. That is structural proof of a local activation-lifetime defect, not a sustained visual verdict and not a universal missing-FX explanation.
 
 ## v6.1 disposition
-`TIMESHIFTVR_OMNI_EXACT_CLOSURE_v6.1.0` is **not** the current gate and must not be run AS-IS. Later source audit found material verdict/function-boundary/owner-classification defects. Preserve useful SDC parsing ideas only through corrected lineage.
+`TIMESHIFTVR_OMNI_EXACT_CLOSURE_v6.1.0` is not current NEXT and must not be run AS-IS.
 
 ## Current execution status
 ```text
+COLD = CONTINUE
 LIVE = DENIED
 VALID_FRESH_LIVE_TICKET = NONE
 ```
-
-`DELAY_RIGHT_TEARDOWN_ONLY` is an unexecuted causal candidate, not a PASS/FAIL result. R3 remains structural REDTEAM; executable mutation belongs to the incumbent implementation owner after COLD closes the exact teardown/queue boundary.
 
 ## Start here
 1. `LATEST_SYNC.md`.
 2. `docs/STATE.md`.
 3. `docs/NEXT.md`.
 4. `docs/ACTIVE_CLAIMS.md`.
-5. R3 branch: `cold/r3/latefx-ownership:docs/COLD/R3_EYE_DONE_TRANSACTION_SYNC_20260908.md`.
-6. `docs/EVIDENCE_BOUNDARY.md` and `docs/BRANCH_PROMOTION_POLICY.md`.
+5. `docs/EVIDENCE_BOUNDARY.md` and `docs/BRANCH_PROMOTION_POLICY.md`.
+6. Exact preserved RESULT/source corpus for the active edge.
 
 ## Working discipline
 `REUSE -> ADAPT -> FIX -> EXTEND`
@@ -79,6 +80,4 @@ VALID_FRESH_LIVE_TICKET = NONE
 
 `MAXIMIZE COLD BEFORE LIVE`
 
-`VISUAL HEADSET VERDICT != AUTOMATIC STRUCTURAL PASS`
-
-Do not create another LIVE until a fresh implementation-owner ticket has the mandatory five causal lines and preserves OLD-GOOD.
+R3 remains structural REDTEAM. Do not create another LIVE until the exact ownership edge is cold-saturated and the incumbent implementation owner issues a fresh five-line causal ticket.
