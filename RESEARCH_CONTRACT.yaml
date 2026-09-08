@@ -4,7 +4,7 @@
   "canonical_state": "docs/STATE.md",
   "workflow": "docs/WORKFLOW.md",
   "current_issue_number": 2,
-  "active_gate_anchor": "Current gate",
+  "active_gate_anchor": "Current gate — EYE_DONE / final-color transaction ownership",
   "protected_baseline_anchor": "v4.7.2 OLD-GOOD",
   "claim_graph": "CLAIM_GRAPH.json",
   "active_claim_ids": ["TS-FX-PASS-OWNER"],
