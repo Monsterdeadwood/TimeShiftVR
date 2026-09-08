@@ -12,6 +12,9 @@ LIVE = DENIED
 4. `docs/EVIDENCE_BOUNDARY.md` and `docs/BRANCH_PROMOTION_POLICY.md`.
 5. Exact preserved RESULT/source corpus for any claim being advanced.
 
+## Generic continuation gate
+On `думайте дальше` / generic continuation, resolve current status/owner first: `ACTIVE` -> own FIRST_MISSING_EDGE only; `PENDING` -> ingest/validate; `HOLD/BLOCKED` -> blocker only; `CLOSED/PROVEN/FALSIFIED/SUPERSEDED/DO_NOT_REPEAT` -> STOP that PRIMARY_FACT; `UNBOUND` -> COLD only; conflict -> adjudicate before mutation. Generic continuation never authorizes sibling-claim takeover or LIVE/build by itself.
+
 ## Current canonical direction
 The serial gate is no longer `TIMESHIFTVR_OMNI_EXACT_CLOSURE_v6.1.0` and is not generic texture/state replay.
 
