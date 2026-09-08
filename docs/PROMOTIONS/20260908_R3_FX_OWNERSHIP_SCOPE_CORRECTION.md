@@ -48,6 +48,9 @@ These are now explicitly marked `BORROWED_EVIDENCE` for R3. This correction does
 ## Orthogonal shadow-cache evidence retained
 One-shot TS-LIVE-005 mechanically restored a native RIGHT bind -> 102 draws -> cleanup transaction after one cache miss. Preserve it as structural proof of a local activation-lifetime defect; do not promote it as a universal missing-FX fix.
 
+## Machine contract reconciliation
+`RESEARCH_CONTRACT.yaml.active_gate_anchor` is updated from the prior EYE_DONE wording to `Current R3 FIRST_MISSING_EDGE`, matching the canonical `docs/STATE.md` and the existing claim graph state anchor. This is part of the same scope correction, not a checker bypass.
+
 ## Protected baseline
 No change to:
 - exact retail identity;
@@ -65,6 +68,7 @@ VALID_FRESH_LIVE_TICKET = NONE
 ```
 
 ## Canonical files changed
+- `RESEARCH_CONTRACT.yaml`
 - `README.md`
 - `LATEST_SYNC.md`
 - `CLAIM_GRAPH.json`
