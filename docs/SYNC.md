@@ -1,119 +1,159 @@
 # TimeShiftVR — SYNC
 
-Updated: 2026-08-27 +03
+Updated: 2026-09-08 +03
 
-This repository is the persistent canonical state for TimeShiftVR research. Carry forward verified facts, bounded negatives, explicit visual verdicts, reproducible next gates and artifact lineage. Do not store copyrighted game binaries here.
+Repository: `Monsterdeadwood/TimeShiftVR`
+Active claim: `TS-FX-PASS-OWNER`
+Current gate: `EYE_DONE / final-color transaction ownership`
 
-## Repository state
-- repository: `Monsterdeadwood/TimeShiftVR`.
-- branch: `main` only.
-- issues: none at synchronization time.
-- pull requests: none at synchronization time.
-- previous latest commit before this sync: `a599f862d2874e18ff97e80cfc1d61d832ba3094` — `Add TimeShiftVR runtime evidence ledger through v5.3` — 2026-08-25.
-- the previous canonical docs were therefore stale relative to the 2026-08-27 local evidence line.
+## Frozen target
+- GOG TimeShift 1.02 x86.
+- Retail SHA256 `78ac1602411b39ab31f22203eb45df0236c35e8b1c59e33fabc969b617953613`.
+- CPU-fixed donor SHA256 `49bcca23d3d7872fbb578183b77472b64ecd8e3f8d68bfcccb1af6f04d4d8ed6`.
 
-## Frozen corpus / target
-- corpus: `C:\GOG Games\TimeShift1`.
-- shared tools: `C:\GOG Games\VR Research Tools`.
-- retail: GOG TimeShift 1.02 x86.
-- retail SHA256: `78ac1602411b39ab31f22203eb45df0236c35e8b1c59e33fabc969b617953613`.
-- CPU-fixed donor SHA256: `49bcca23d3d7872fbb578183b77472b64ecd8e3f8d68bfcccb1af6f04d4d8ed6`.
+## Protected runtime baseline
+`v4.7.2 OLD-GOOD` remains authoritative for working same-frame OpenXR stereo:
+- 5858 completed LEFT/RIGHT pairs;
+- 41006 / 41006 uploads;
+- 3197 XR frames;
+- physical per-eye pose/FOV behavior;
+- real binocular headset content.
 
-# Canonical document map
-1. `docs/STATE.md` — active PROVEN / FALSIFIED / STILL UNKNOWN / STOP RULE.
-2. `docs/PROVEN.md` — evidence-backed facts retained across branches.
-3. `docs/FALSIFIED.md` — rejected and saturated approaches; duplicate-research guard.
-4. `docs/NEXT.md` — one current serial gate and pass/fail routing.
-5. `docs/EVIDENCE_LEDGER_20260827.md` — full Aug-27 closure with exact artifact hashes and candidate ranking.
-6. `docs/RUNTIME_LINEAGE_20260825.md` — historical v4.7.2 -> v5.3 runtime ledger; preserved, not rewritten as if current.
-7. `README.md` — compact project entry point.
+Current-best effect state remains `OLD-GOOD + DIP exact TEX0+TEX1`.
 
-# Frozen historical runtime lineage
-The following historical facts remain authoritative and are not to be rediscovered:
-- v4.7.2 true same-frame OpenXR transport: 5858 pairs, 41006/41006 uploads, 3197 XR frames.
-- v5.0 exact 1024×2048 D16 shadow resource asymmetry.
-- v5.1.1 structural execution with visual rejection; broad high-level View mutation and per-shader last-texture replay rejected.
-- v5.2 exact 1398 -> 1398 shadow-bind mirror executed with zero failures but did not restore visible shadows.
-- v5.3 source audit corrected image/physical-eye identity and row-vector RH off-axis sign errors; retained as historical correction.
+## Retained historical closures
+Do not reopen without contradictory exact evidence:
+- broad high-level View mutation rejected;
+- per-shader last-LEFT-texture replay rejected;
+- v5.2 exact D16 bind mirror executed but was visually insufficient;
+- DP-only exact/resync modes damage lighting;
+- wider generic DIP/DP/TEX/shadow-state replay produced no material recovery;
+- host image-only eye swap / old projection-sign compensation rejected;
+- View-stack foundation around `root+0x618`, slot0 `root+0x620`, and generic View copy `0x00956680` retained.
 
-# 2026-08-27 runtime lineage
-The working line returned to the OLD-GOOD v4.7.2 transport/camera baseline and isolated effect-state behavior instead of continuing broad projection/shadow rewrites.
+## 2026-09-08 convergence correction
+The former canonical serial gate `TIMESHIFTVR_OMNI_EXACT_CLOSURE_v6.1.0` is stale.
 
-Key generated/executed sequence:
-- `TIMESHIFTVR_STEREO_LIGHT_ISOLATION_v6_10_0`.
-- `TIMESHIFTVR_MANUAL_10MODE_VR_LAB_v6_11_x`.
-- `TIMESHIFTVR_OLDGOOD_EFFECT_10MODE_v6_12_x`.
-- `TIMESHIFTVR_OLDGOOD_EFFECT_RESYNC_10MODE_v6_13_x`.
-- `TIMESHIFTVR_OLDGOOD_FX_PASS_BOUNDARY_v6_14_0` generated after the manual verdict.
+Later preserved source audit established that v6.1 AS-IS is not an admissible scientific verdict source due unconditional PASS reporting, raw-byte function slicing, weak direct-COM owner heuristics and incomplete exact-tail semantics. Preserve useful SDC ideas only through corrected decoded-function lineage. Do not run v6.1 merely because an older document says `awaiting RESULT`.
 
-Bounded visual verdict:
-- DP exact and DP resync modes damaged lighting.
-- the other tested widening/resync modes did not materially recover missing FX.
-- OLD-GOOD + DIP exact TEX0+TEX1 remains the current-best effect-state baseline.
+## Current exact render-transaction model
+Synthetic stereo duplicates the exact inner renderer `0x0067F4F0`.
 
-Disposition: **texture-replay widening is saturated; require semantic pass ownership before another LIVE mutation.**
+Exact-retail parent/CFG evidence places additional native work after that inner call in `0x0067F100`, including:
+```text
+stage10
++0x78
++0x9C(View)
++0x7C = 0x00680EF0
+```
 
-# 2026-08-27 COLD lineage
+Recovered vtable anchors:
+```text
+base 0x00D8D810
++0x2C -> 0x0067F4F0
++0x78 cell 0x00D8D888
++0x9C cell 0x00D8D8AC
++0x7C -> 0x00680EF0
+```
 
-## Camera / player-frame ownership
-- `TIMESHIFTVR_OWNER_SOURCE_FIRE_RESULT_20260827_034120.zip`.
-- `TIMESHIFTVR_STACK_LOCAL_CAMERA_OWNER_COLD_RESULT_20260827_040323.zip`.
-- `TIMESHIFTVR_VIRTUAL_CAMERA_OWNER_COLD_RESULT_20260827_044735.zip`.
-- `TIMESHIFTVR_TRUE_MAIN_PLAYER_FRAME_COLD_RESULT_20260827_135326.zip`.
+Preserved v6.13 runtime lineage shows:
+- 10455 / 10455 RIGHT returns are followed by native `0x00680EF0` and later `425BF981 / 6FDF4543` in the same frame;
+- in 10454 / 10455 stereo-return frames that final draw is the last D3D9 draw, modulo one multi-pair accounting case;
+- representative post-RIGHT tail = 2 rain + 14 overlay/HUD + 1 final fullscreen draw.
 
-Main proven renderer state:
-- View-stack header `root+0x618`, slot0 `root+0x620`.
-- `0x00956680` generic View push/copy, stride `0x364`, via `0x004B0DE0`.
-- mirrorSys excluded from main slot0 ownership by index/cadence evidence.
-- exact non-mirror gameplay/body producer still open.
+Therefore `0x0067F4F0 RET` is `INNER_DONE`, not established `EYE_DONE`.
 
-## Donor / corpus closure
-- `TIMESHIFTVR_DONOR_CLOSURE_RESULT_20260827_052826.zip`.
-- `TIMESHIFTVR_MAX_COLD_HARVEST_RESULT_20260827_053816.zip`.
+## Final-color ownership correction
+Preserved stereo counters:
+```text
+425 / 09AF:
+  eye0 64
+  eye1 10455
+  eye2 10455
 
-Important donor families include rain, distortion, bullet-time and crosshair/bullet-tracer; donor metadata marks the crosshair/bullet-tracer family as affecting lights. Retail proof remains separate.
+425 / 6FDF:
+  eye0 10519
+  eye1 0
+  eye2 0
+```
 
-## PAIR / SDC / GLT / RTTI closure
-- `TIMESHIFTVR_PAIR_SDC_COMPDB_CLOSURE_RESULT_20260827_135123.zip`.
-- `TIMESHIFTVR_SHADERDB_RTTI_CLOSURE_RESULT_20260827_141602.zip`.
-- `TIMESHIFTVR_OMNI_COLD_CLOSURE_RESULT_20260827_144128.zip`.
+Native order places `09AF` before late FX and `6FDF` after them. The older `simple shader branch divergence` model is rejected.
 
-Cumulative proven evidence:
-- PAIRS 9180 / 374 unique parsed SHA.
-- canonical GLT 192-slot schema.
-- 109 retail descriptor assignments / 109 slot-index agreements.
-- dynamic-light/shadow slots 33, 41–49, 72 mapped.
-- expanded SDC corpus 375 files / 198 unique SHA.
-- 203984 compiled D3D9 shader blobs in the v5 OMNI closure.
-- 134 exact donor CRC matches.
-- 900 RTTI method rows and 485 owner-ranking rows.
-- strong retail structural candidates `0x003A9652` and `0x003A6DEC` plus d3dPASS virtual-method family around `0x003A5F10`, `0x003A5F20`, `0x003A74A0`, `0x003A7FB0`.
+Use:
+`FINAL_COLOR_TRANSACTION_OWNERSHIP_DIVERGENCE`.
 
-These candidates are not promoted to final runtime semantics until D3D9-touching methods are separated from registry/init code.
+## Current premature-teardown fact pattern
+At current RIGHT return, the stereo wrapper clears:
+```text
+eye_phase = 0
+stereo_active = 0
+RT = real backbuffer
+```
 
-# Active gate after synchronization
-`TIMESHIFTVR_OMNI_EXACT_CLOSURE_v6.1.0.zip`
+Saber then continues native late work. Immediately before final `6FDF`, it requests the real backbuffer at caller RVA `0x0039C4F6`.
 
-Status: **GENERATED / COLD ONLY / awaiting RESULT**.
+Existing SetRenderTarget routing already knows:
+```text
+stereo_active && requested == backbuffer:
+  eye1 -> private LEFT RT
+  eye2 -> private RIGHT RT
+```
 
-Package SHA256:
-`7bfdb72c5dc71719d7b1cf487be3df35c120798ab1dc345381800fac80aa83dc`
+Actual private surfaces on the preserved run:
+- LEFT `0x01502FC0`;
+- RIGHT `0x01502A20`;
+- BACK `0x01502480`.
 
-v6.1 reuses and corrects the v5 OMNI line rather than starting a new architecture. It fixes the multi-group SDC metadata model and closes:
-- exact compiled shader -> SDC record/key identity;
-- donor shader co-residence;
-- GLT 43-byte permutation tails;
-- actual `d3dPASS_*` virtual methods that directly touch D3D9.
+Older `0x0FC861A0 / 0x0FC86620` values are Saber internal surfaces and are not private VR-eye identity.
 
-# Evidence policy
-- automatic counters prove execution, not visual correctness.
-- headset observation is authoritative for visual fusion/lighting/effect quality.
-- exact retail proof outranks donor/source labels.
-- exact compiled shader identity outranks text proximity.
-- RTTI + GLT + callgraph + D3D9 activity intersection outranks any one ranking score.
-- do not stack conflicting intrusive D3D9 wrappers.
-- one PRIMARY FACT per LIVE experiment; collect broad compatible secondary evidence only when causality remains clean.
-- REUSE -> ADAPT -> FIX -> EXTEND before inventing a new analyzer or runtime architecture.
+## Independent older RESULT support
+`TIMESHIFTVR_PROJECTION_IDENTITY_RECOVERY_RESULT_20260826_002808.zip` records 3234 completed RIGHT returns and exactly 3234 post-RIGHT final `425/6FDF` fullscreen draws to the real backbuffer. Its pre-SBS final backbuffer image contains strong rain/final composition missing from saved private eye images.
 
-# STOP RULE
-No new missing-FX LIVE until v6.1 COLD exact closure is judged. If it yields a bounded pass owner, the next LIVE may test one exact semantic boundary while preserving the OLD-GOOD baseline. If it does not, extend the same COLD line from the failed invariant.
+This independently supports a late transaction-boundary defect rather than XR readback failure.
+
+## Orthogonal shadow/cache line
+Exact-retail shadow/light producer/cache ownership around `0x006E6220 -> 0x006EB650 -> 0x006EBB40 -> 0x007C7000 -> 0x007C7470` remains a separate defect.
+
+A preserved one-shot TS-LIVE-005 result mechanically restored a native RIGHT bind -> 102 draws -> cleanup transaction for one selected pair after one cache miss. That is not a sustained visual verdict and does not replace the EYE_DONE gate.
+
+## Active R3 line
+Branch: `cold/r3/latefx-ownership`
+Shadow note: `docs/COLD/R3_EYE_DONE_TRANSACTION_SYNC_20260908.md`
+Role: R3 structural red-team.
+
+R3 owns:
+- exact EYE_DONE boundary after `0x0067F4F0`;
+- `+0x78 / +0x9C(View) / +0x7C` ownership;
+- FX queue/list/membership lifetime;
+- destructive-vs-reusable queue behavior before any future tail duplication.
+
+R3 does not own a competing implementation build.
+
+## Active R4 line
+Branch: `cold/r4/sidecar-ownership`.
+R4 remains separate and unbound. Do not collapse sidecar/replacement ownership into the current native Saber transaction question.
+
+## Unexecuted causal candidate
+`DELAY_RIGHT_TEARDOWN_ONLY` is a narrow future discriminator, not an accepted RESULT.
+
+Its conceptual isolation is to preserve all native execution counts and change only whether the single already-existing natural late tail remains owned by RIGHT long enough for native backbuffer routing to reach the private RIGHT RT.
+
+No accepted execution result exists for that canary.
+
+## Current status
+```text
+COLD = CONTINUE
+LIVE = DENIED
+VALID_FRESH_LIVE_TICKET = NONE
+```
+
+## STOP RULE
+- no v6.1 AS-IS;
+- no new generic OMNI/pass-ranking analyzer;
+- no repeat of same-frame stereo proof;
+- no generic DIP/DP/TEX/state replay;
+- no blind second `0x006E6220`;
+- no whole `0x0067F100 x2` as first repair;
+- no manual `6FDF` replay as primary repair;
+- no late-tail duplication before queue/temporal ownership closure;
+- no executable R3 LIVE without a fresh implementation-owner ticket and exactly five causal preflight lines.

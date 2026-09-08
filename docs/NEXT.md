@@ -1,99 +1,137 @@
 # TimeShiftVR — NEXT
 
-Updated: 2026-08-27 +03
+Updated: 2026-09-08 +03
 
-## Current serial gate — OMNI EXACT CLOSURE v6.1
+## Current serial gate — EYE_DONE / final-color transaction ownership
 
-Canonical package:
-`TIMESHIFTVR_OMNI_EXACT_CLOSURE_v6.1.0.zip`
+Active claim:
+`TS-FX-PASS-OWNER`
 
-Status: **GENERATED / COLD ONLY / awaiting RESULT**.
+State:
+```text
+COLD = CONTINUE
+LIVE = DENIED
+VALID_FRESH_LIVE_TICKET = NONE
+```
 
-The 2026-08-25 v5.3 projection-identity gate is historical. The project has since returned to the OLD-GOOD working stereo line and exhausted the useful simple texture-replay variants. The immediate missing fact is now semantic: **which exact compiled SDC/GLT/d3dPASS runtime lane owns the missing lighting/effect boundary?**
+The old `TIMESHIFTVR_OMNI_EXACT_CLOSURE_v6.1.0` instruction is superseded as the current gate. Its SDC ideas remain reusable, but the AS-IS analyzer is not an admissible canonical verdict source and must not be run merely because older docs said `awaiting RESULT`.
 
-See:
-- `docs/STATE.md` for current canonical state.
-- `docs/EVIDENCE_LEDGER_20260827.md` for the full 2026-08-27 evidence closure.
+## Frozen baseline that must hold
+- exact GOG TimeShift 1.02 x86 retail target;
+- retail SHA256 `78ac1602411b39ab31f22203eb45df0236c35e8b1c59e33fabc969b617953613`;
+- v4.7.2 OLD-GOOD same-frame OpenXR stereo;
+- current-best effect state = OLD-GOOD + DIP exact TEX0+TEX1;
+- no R3 COLD step launches the game, injects, patches, stages a DLL or mutates the corpus.
 
-# Frozen baseline that must hold
-- GOG TimeShift 1.02 x86 target identity remains exact.
-- v4.7.2 OLD-GOOD same-frame stereo transport remains the frozen transport baseline.
-- current-best effect-state behavior is OLD-GOOD + DIP exact TEX0+TEX1.
-- no COLD experiment may launch the game, inject, patch, stage a DLL, or mutate the corpus.
+## Current model to attack, not assume
+The synthetic stereo wrapper executes the exact inner renderer `0x0067F4F0` for LEFT and RIGHT, then releases eye ownership at `RETURN_RIGHT` while Saber continues a natural late view/finalization region.
 
-# Why v6.1 exists
-The v5 OMNI result corrected a material parser assumption: multi-group SDC metadata is interleaved by group before all zlib payloads.
+Preserved execution shows:
+```text
+RETURN_RIGHT
+  -> native 0x00680EF0 view/update
+  -> rain / overlays / late FX
+  -> Saber SetRenderTarget(real backbuffer)
+  -> 425BF981 / 6FDF4543 final
+  -> drawing end
+```
 
-Correct structural model:
-1. `u32 group_count`.
-2. `u32 total_record_count`.
-3. `u32 total_compressed_bytes`.
-4. For every group: `compressed_size`, `record_count`, then that group's per-record `keyA`, `keyB`, `raw_record_size` triplets.
-5. All zlib payloads follow in group order.
+The final stage remains eye0-only in the preserved v6.13 line because `eye_phase` and `stereo_active` are already cleared before the late tail.
 
-v6.1 must use that structure to close four linked unknowns without LIVE execution:
-- exact compiled D3D9 shader -> SDC record -> `keyA/keyB` identity;
-- donor VS/PS co-residence and record identity;
-- 43-byte GLT permutation-tail validation and lighting/shadow option census;
-- exact `d3dPASS_*` virtual methods with direct `IDirect3DDevice9` COM activity, separated from registry/init methods.
+Treat this as a leading ownership model, not an executed repair verdict.
 
-# Exact experiment contract
+## Highest-value COLD targets
 
-MISSING FACT: exact SDC group/record map, donor shader co-residence and keys, GLT 43-byte option records, actual `d3dPASS` runtime methods touching D3D9.
+### 1. Exact EYE_DONE boundary
+Close the physical instruction/control boundary after `0x0067F4F0` that owns the end of the natural late transaction.
 
-WHY NOT COLD: N/A; v5 exposed the required invariants and all required files are local.
+Do not assume `RET 0x00680EF0` is after the final `6FDF`; prove its position relative to rain/overlay/final draws and the enclosing parent continuation.
 
-PASS: SDC boundaries/decompression/raw splits validate; donor CRCs resolve to exact records; GLT tails validate; pass virtual methods are separated by real D3D9 COM activity.
+Required output:
+- exact containing function/basic-block boundary;
+- exact return/continuation order;
+- whether required RIGHT eye state survives to the final backbuffer request;
+- no guessed interior jump target.
 
-FAIL: invariants fail broadly or ownership remains indistinguishable.
+### 2. Per-view vs shared tail ownership
+Use existing exact-retail vtable/CFG evidence:
+```text
+vtable base 0x00D8D810
++0x2C -> 0x0067F4F0
++0x78 cell 0x00D8D888
++0x9C cell 0x00D8D8AC
++0x7C -> 0x00680EF0
+```
 
-BASELINE MUST HOLD: no game launch, injection, patch, DLL install, or source mutation.
+Close semantics/lifetime for:
+- `+0x78`;
+- `+0x9C(View)`;
+- `+0x7C / 0x00680EF0`;
+- `DAT_00FCACD8` FX queue/list/membership relationships.
 
-# What to inspect in the RESULT
-Rank the result by **independent evidence intersection**, not by one score alone:
-1. exact donor CRC -> compiled shader -> SDC record/key evidence;
-2. GLT slot/descriptor/permutation agreement;
-3. RTTI class + vtable method identity;
-4. direct D3D9 COM call activity from that method;
-5. callgraph/xref neighborhood linking runtime pass execution rather than registration only;
-6. cross-version homology as supporting evidence, never retail proof by itself.
+The question is ownership, not another broad shader census.
 
-A candidate is not promoted merely because it has many strings or registry references.
+### 3. Queue destructiveness before any tail duplication
+Classify downstream `0x007C1780` and adjacent FX containers as:
+- immutable/replayable;
+- cursor-based but non-destructive;
+- destructive drain/clear;
+- frame-global/shared temporal owner.
 
-# PASS routing
-If v6.1 produces one or a small bounded set of runtime pass owners with independent support:
-- freeze all v6.1 exact maps into `PROVEN`;
-- choose **one PRIMARY FACT** for the next LIVE test;
-- mutate only one exact semantic pass boundary;
-- preserve OLD-GOOD stereo/camera and stable lighting;
-- collect broad compatible passive secondary harvest: draw ordinal, RT/DS, textures, VS/PS, constants, state transitions, callsite and pass identity.
+This does **not** block a one-tail owner-transfer canary, but it does block any future `(INNER+TAIL)L -> (INNER+TAIL)R` implementation.
 
-Before that LIVE, write exactly:
-- MISSING FACT
-- WHY NOT COLD
-- PASS
-- FAIL
-- BASELINE MUST HOLD
+### 4. Keep the shadow-cache defect separate
+Retain the exact one-shot `TS-LIVE-005-RIGHT-LIGHT-CACHE-REARM` result as structural evidence that a cache miss can restore the native RIGHT shadow transaction.
 
-If those five lines cannot be filled honestly, do not build the experiment.
+Do not use another sustained v6.14.x harness from R3 to answer the final-color ownership question.
 
-# FAIL routing
-If v6.1 cannot validate the corrected SDC layout or cannot distinguish runtime pass methods:
-- do not launch a new LIVE sweep;
-- inspect the failing invariant and extend the same COLD lineage;
-- preserve the v5 OMNI corpus and ranking tables;
-- REUSE -> ADAPT -> FIX -> EXTEND the v6.1 analyzer rather than create an unrelated oracle.
+## Unexecuted causal discriminator — handoff candidate only
+If COLD closes the teardown boundary sufficiently and the incumbent implementation owner issues a fresh ticket, the smallest causal test is conceptually:
+```text
+KEEP:
+  PRE x1
+  LEFT inner x1
+  RIGHT inner x1
+  natural late tail x1
+  final x1
 
-# Explicitly not next
+CHANGE ONLY:
+  keep RIGHT eye ownership alive through the existing natural late finalization
+  instead of clearing it at RETURN_RIGHT
+```
+
+Mechanical discriminator:
+- native real-backbuffer request occurs while RIGHT ownership is still active;
+- existing SetRenderTarget hook routes it to private RIGHT RT;
+- `425/6FDF` moves from eye0 toward eye2 without increasing tail execution count.
+
+Visual discriminator, only if a valid LIVE is later authorized:
+- RIGHT gains missing rain/fullscreen/final composition;
+- OLD-GOOD stereo geometry and lighting baseline remain healthy.
+
+This discriminator has **not been executed**. Do not label it PASS/FAIL.
+
+## Explicitly not next
 Do not:
-- repeat v5.1 broad camera/source mutation;
-- repeat per-shader last-texture replay;
-- repeat the v5.2 one-shadow-bind mirror as the complete fix;
-- revive host image-only eye swapping or old projection-sign compensation;
-- run DP-only exact/resync effect replay again; it damaged lighting in the visual sweep;
-- generate another wider DIP/DP/resync/TEX0..3 texture-state sweep without a newly identified semantic owner;
-- start controller/weapon integration while the render-pass missing-FX boundary is unresolved;
-- treat donor names, RTTI names, PAIRS proximity, or registry functions as final retail runtime proof without independent intersection.
+- run v6.1 AS-IS;
+- create a new OMNI/pass-ranking analyzer;
+- repeat same-frame stereo proof;
+- repeat broad DIP/DP/TEX/state replay;
+- rediscover `0x006EB650 +0x470/+0x474`;
+- blindly repeat `0x006E6220`;
+- replay `6FDF` manually as the primary repair;
+- duplicate `0x0067F100` wholesale;
+- duplicate the late tail before queue/temporal ownership is classified;
+- create another v6.14.x sustained cache harness from R3;
+- start weapon/controller work while this renderer gate remains active.
 
-# Current STOP RULE
-**No new missing-FX LIVE until the v6.1 COLD exact closure is judged.**
+## Branch-local research entrypoint
+Read:
+`cold/r3/latefx-ownership:docs/COLD/R3_EYE_DONE_TRANSACTION_SYNC_20260908.md`
+
+Then continue the exact COLD edge already recovered. Do not restart from shader names or v6.1.
+
+## Current STOP RULE
+**No new missing-FX LIVE from R3.**
+
+R3 is structural REDTEAM. It must close/falsify ownership assumptions and hand any future executable one-mutation ticket to the existing implementation owner. Before that future LIVE, the mandatory five causal lines must be filled honestly.
