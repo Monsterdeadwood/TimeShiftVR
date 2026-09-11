@@ -8,7 +8,7 @@
       "summary":"identify the exact semantic View-dependent late-FX owner and concrete downstream consumer/lifetime responsible for rain distortion light and final work missing from synthetic RIGHT; current search surface is inner dispatch +0x48..+0x74 or a neighboring owner, not +0x9C membership",
       "aliases":["exact missing FX pass ownership","real View-dependent late FX owner","View to late FX consumer ownership"],
       "fingerprints":["semantic View inner dispatch late FX consumer","View owner consumer lifetime"],
-      "state_anchor":"Corrected R3 FIRST_MISSING_EDGE 2026-09-10",
+      "state_anchor":"Current R3 FIRST_MISSING_EDGE",
       "evidence_ids":["TS-EV-LEDGER-20260827","TS-EV-OMNI","TS-EV-VIEWFX-630","TS-EV-VIEWFX-631"]
     },
     {
@@ -17,7 +17,7 @@
       "summary":"DAT_00FCACD8 +0x9C / 0x00681500 as the missing View-to-FX queue/list/membership owner",
       "aliases":["+0x9C membership owner","View +9C queue membership"],
       "fingerprints":["0x00681500 membership owner"],
-      "state_anchor":"v6.3.0 exact-retail correction",
+      "state_anchor":"2026-09-10 exact-retail correction",
       "evidence_ids":["TS-EV-VIEWFX-630","TS-EV-VIEWFX-631"]
     },
     {"id":"TS-OLDGOOD-STEREO","status":"PROVEN","summary":"v4.7.2 OLD-GOOD true same-frame OpenXR stereo transport baseline","aliases":["OLD-GOOD stereo"],"fingerprints":["v4.7.2 old good stereo"],"evidence_ids":["TS-EV-LEDGER-20260827"]},
