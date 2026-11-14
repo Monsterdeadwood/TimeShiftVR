@@ -1,83 +1,94 @@
-# TimeShiftVR
+> [!IMPORTANT]
+> **[TEST BUILDS & DISCUSSION · FLAT2VR DISCORD](https://discord.gg/P4q9zt7ek)**
+> Testing, build requests, feedback and discussion happen in the **Flat2VR Modding Discord**. Join the server and find the **TimeShift VR** thread.
 
-Native VR integration research for **TimeShift / Saber3D**.
+![TimeShift VR — Monsterdeadwood VR mods](assets/vr-banner.svg)
+
+# TimeShift VR
+
+[English](README.md) · [Русский](README_RU.md) · [Flat2VR Discord](https://discord.gg/P4q9zt7ek) · [All projects](PORTFOLIO.md)
+
+![Project status](assets/vr-status.svg)
+
+TimeShift in VR with controller-directed weapons, time manipulation, two-handed support and a VR settings menu. Play seated, or enable Roomscale for headset-driven crouching through the game’s original posture system.
+
+**Current documented branch: R65a community package / R66 precision candidate.**
+
+## Installation
+
+1. Get the current **TimeShift VR** test package in the TimeShift thread on Flat2VR, matched to its supported game executable.
+2. Extract the complete **Put Me in Folder of Game** folder into the TimeShift directory, beside **bin**.
+3. Connect PC VR, activate its OpenXR runtime and open **RUN.bat** inside the mod folder.
+4. Seated mode is the default. Hold Left Menu, open Options → VR Settings to choose Roomscale, then tap Left Menu at a comfortable height.
+
+Current test-package availability is coordinated in Discord. Use the complete package for your supported game build; this project page is separate from a release download.
+
+## What this project brings to VR
+
+- Stereo VR, tracked aiming and all nine weapons in the development/test branch.
+- Slow, freeze and reverse time directly from controller inputs.
+- Two-hand support at authored weapon grips, with a free hand after release.
+- Saved VR settings, smooth/snap turning, seated and Roomscale posture modes.
+- Physical crouch requests the original game posture/collision profile.
+- Launcher progress feedback and local SEND_TO_DISCORD diagnostics.
+
+<details>
+<summary><b>Controller quick reference</b></summary>
+
+| Input | Action |
+| --- | --- |
+| Left stick / click | Move / hold crouch |
+| Right stick horizontal | Smooth or snap turn |
+| Right stick up / down / click | Reverse / slow / freeze time; repeat a mode to cancel it |
+| Right trigger / left trigger | Primary / secondary fire |
+| Right grip / left grip | Reload / weapon support near grip, otherwise Use + laser |
+| A / X | Jump and confirm / interact |
+| B tap / hold | Next / previous weapon |
+| Y tap / hold | Throw grenade / next grenade type |
+| Left Menu tap / hold | Recenter / game menu; hold threshold 650 ms |
+
+The complete package control sheet takes precedence for its version and interaction profile.
+
+</details>
 
 ## Current status
-**ACTIVE — true same-frame OpenXR stereo is proven; the current R3 renderer gate is exact per-View scene/FX ownership.**
 
-The project does not need another generic texture replay or another OMNI pass-ranking sweep. The working stereo transport is real. The current R3 question is where Saber turns a high-level `View*` into the FX queue/list/membership consumed by rain, distortion, light and related passes.
+**Experimental preview.** Native-game/XR Sim checks cover posture, recenter, selected video transitions and nine-weapon firing in the recorded revisions.
 
-## Frozen retail target
-- GOG TimeShift 1.02 x86.
-- Retail SHA256: `78ac1602411b39ab31f22203eb45df0236c35e8b1c59e33fabc969b617953613`.
-- CPU-fixed startup donor SHA256: `49bcca23d3d7872fbb578183b77472b64ecd8e3f8d68bfcccb1af6f04d4d8ed6`.
+- Physical-headset comfort and full-campaign Roomscale coverage remain open; low ceilings, ladders and platforms need broader playtesting.
+- Compatibility is tied to the package’s supported EXE identities; support for every Steam/retail executable is not established.
 
-## Protected baseline
-### v4.7.2 OLD-GOOD true stereo
-- 5858 completed same-frame LEFT/RIGHT pairs.
-- 41006 / 41006 eye uploads.
-- 3197 OpenXR frames.
-- physical Quest IPD / asymmetric per-eye FOV.
-- real binocular content reaches the headset.
+R66 tests tracked primary-fire precision while retaining the shotgun pellet cone. It is a distinct experimental candidate; precision_aim=false restores the original accuracy model.
 
-Current-best effect state remains `OLD-GOOD + DIP exact TEX0+TEX1`.
+[Detailed status and validation scope](docs/PROJECT_STATUS.md)
 
-## Current R3 renderer model
-The exact inner renderer is `0x0067F4F0`; arg1 is the high-level Saber `View*`. Current synthetic RIGHT reuses the same `View*` as LEFT.
+## Testing & feedback
 
-The current owner surface is:
-```text
-View*
-  -> DAT_00FCACD8
-     +0x28/+0x2C per-View preparation
-     +0x78 -> +0x9C(View) -> +0x7C MAIN bracket
-  -> FX queue/list/membership
-  -> consumer
-```
+Post in the game’s [Flat2VR thread](https://discord.gg/P4q9zt7ek) with your **mod version, game/store version, headset, OpenXR runtime, GPU, reproduction steps and the package’s diagnostic ZIP**. A short video is helpful for visual or handling problems.
 
-`DAT_00FCACD8 +0x8C/+0x90` are structurally tied to object registration/unregistration, and the managed object families include rain, distortion, shadow-map, mirror and light-related flags.
+## Other VR mods by Monsterdeadwood
 
-### Current FIRST_MISSING_EDGE
-```text
-View*
-  -> DAT_00FCACD8 +0x9C(View)
-  -> FX queue/list/membership
-  -> consumer
-```
+| Game / project | Focus | Visibility |
+| --- | --- | --- |
+| [Battlefield 3 VR](https://github.com/Monsterdeadwood/BF3VR) | Campaign, tracked weapons and hands | Private |
+| [Assassin’s Creed VR](https://github.com/Monsterdeadwood/AC1VR) | First-person exploration, climbing and sword interaction | Private |
+| [Crysis 2 VR](https://github.com/Monsterdeadwood/C2VR) | Nanosuit combat, physical interaction and spatial UI | Private |
+| [NOVA · CS:GO Legacy VR](https://github.com/Monsterdeadwood/CSGOVR) | CS:GO Legacy local matches with motion controls | Private |
+| [You Are Empty: Absolute Edition VR](https://github.com/Monsterdeadwood/YouAreEmptyAEVR) | Absolute Edition VR, weapons and hand interaction | Public |
+| [Alone in the Dark 2008 VR](https://github.com/Monsterdeadwood/AloneInTheDark2008VR) | Survival-horror VR and held-item interaction | Public |
+| [Rainbow Six Siege VR](https://github.com/Monsterdeadwood/SiegeVR) | Legacy Siege stereo and tracked weapon handling | Public |
+| [Burnout Paradise Remastered VR](https://github.com/Monsterdeadwood/BUrnOutPvr) | Stereo driving, vehicle menus and native effects | Private |
+| [Titanfall 1 VR](https://github.com/Monsterdeadwood/Titanfall1VR) | Pilot combat and Titan cockpit VR | Private |
+| [Metro 2033 VR](https://github.com/Monsterdeadwood/Metro2033VR) | Original Metro VR and native physics experiments | Public |
+| [Insurgency VR](https://github.com/Monsterdeadwood/InsurgencyVR) | Early VR integration research | Private |
+| [Counter-Strike: Source VR](https://github.com/Monsterdeadwood/CSSVR) | Counter-Strike: Source VR development | Private |
 
-Required RIGHT semantic input: `rightView = 0x0067F4F0 arg1`.
+Private repository links are available to invited collaborators. Public project pages are marked above.
 
-## Borrowed late-tail evidence
-A separate sibling/runtime line proves that native late rain/overlay/final work continues after the current RIGHT inner return and that the wrapper releases eye ownership too early for final `425/6FDF` in the preserved lineage.
+## Credits & development notes
 
-That evidence is retained as a strong constraint, but under the cross-role law it is `BORROWED_EVIDENCE`, not the R3 PRIMARY gate. `DELAY_RIGHT_TEARDOWN_ONLY` remains unexecuted.
+Project maintained by [Monsterdeadwood](https://github.com/Monsterdeadwood). This is an independent fan VR project; you need your own supported copy of the original game.
 
-## Orthogonal shadow defect
-A preserved one-shot TS-LIVE-005 cache miss restored a native RIGHT shadow bind -> 102 draws -> cleanup transaction. That is structural proof of a local activation-lifetime defect, not a sustained visual verdict and not a universal missing-FX explanation.
+[Previous repository overview, preserved as history](README_RESEARCH_ARCHIVE.md).
 
-## v6.1 disposition
-`TIMESHIFTVR_OMNI_EXACT_CLOSURE_v6.1.0` is not current NEXT and must not be run AS-IS.
-
-## Current execution status
-```text
-COLD = CONTINUE
-LIVE = DENIED
-VALID_FRESH_LIVE_TICKET = NONE
-```
-
-## Start here
-1. `LATEST_SYNC.md`.
-2. `docs/STATE.md`.
-3. `docs/NEXT.md`.
-4. `docs/ACTIVE_CLAIMS.md`.
-5. `docs/EVIDENCE_BOUNDARY.md` and `docs/BRANCH_PROMOTION_POLICY.md`.
-6. Exact preserved RESULT/source corpus for the active edge.
-
-## Working discipline
-`REUSE -> ADAPT -> FIX -> EXTEND`
-
-`ONE PRIMARY FACT -> ONE CAUSAL TEST -> ONE VERDICT`
-
-`MAXIMIZE COLD BEFORE LIVE`
-
-R3 remains structural REDTEAM. Do not create another LIVE until the exact ownership edge is cold-saturated and the incumbent implementation owner issues a fresh five-line causal ticket.
+Documentation reviewed: **14 November 2026**.
