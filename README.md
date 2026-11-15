@@ -14,7 +14,7 @@
 
 TimeShift in VR with controller-directed weapons, time manipulation, two-handed support and a VR settings menu. Play seated, or enable Roomscale for headset-driven crouching through the game’s original posture system.
 
-**Current documented branch: R65a community package / R66 precision candidate.**
+**Package baseline on this page: R65a community package / R66 precision candidate.**
 
 ## Installation
 
@@ -52,6 +52,12 @@ Current test-package availability is coordinated in Discord. Use the complete pa
 The complete package control sheet takes precedence for its version and interaction profile.
 
 </details>
+
+## Features in newer test builds
+
+- **Changing weather.** A test build went from dry weather to rain and storm. The weather clock and accumulated wind motion continued when moving from outdoors to an indoor area and back.
+- **Trigger and shot feedback.** An experimental trigger cue builds during the squeeze, gives a distinct break and plays recoil when the game records a shot. The dry-press test recorded a break cue without shot recoil.
+- **Laser follows the barrel.** Stereo captures sampled the laser and barrel during reloads on all nine test weapons. These weather, laser and feedback checks used XR Sim or runtime telemetry. How they feel in a headset remains open.
 
 ## Current status
 

@@ -8,6 +8,15 @@ Reviewed **14 November 2026**. Documented branch: **R65a community package / R66
 
 - Native-game/XR Sim checks cover posture, recenter, selected video transitions and nine-weapon firing in the recorded revisions.
 
+## Follow-up tests reviewed 16 November 2026
+
+The weather/trigger and laser candidates were tested separately from R65a and R66. R68 tracked outdoor/indoor/outdoor weather continuity in one process. R69 logged an ordered trigger break and confirmed-shot recoil, a dry break without recoil and laser alignment on nine weapon fixtures. Full reload coverage and physical-headset acceptance are open.
+
+Verification records used for this section
+
+- `TimeShiftVR_Weather_Trigger_20261116/RESULT.json`
+- `TimeShiftVR_R69_Laser_Haptics_20261116/RESULT.json`
+
 ## Current limits
 
 - Physical-headset comfort and full-campaign Roomscale coverage remain open; low ceilings, ladders and platforms need broader playtesting.
