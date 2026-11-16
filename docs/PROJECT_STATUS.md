@@ -39,10 +39,3 @@ This overview was reconciled against the project’s recorded package notes and 
 - `R66 TEST_RECEIPT.json / KNOWN_ISSUES.txt`
 
 Game execution, simulator validation and physical-headset feedback are reported separately above. Features from a separate experimental branch are identified explicitly.
-
-## Кратко по-русски
-
-TimeShift в VR: оружие от контроллеров, управление временем, поддержка второй рукой и меню VR-настроек. Можно играть сидя или включить Roomscale для приседания движением шлема через родную систему поз.
-
-- Комфорт в физическом шлеме и Roomscale во всей кампании ещё проверяются; низкие потолки, лестницы и платформы требуют более широких тестов.
-- Совместимость привязана к поддерживаемым EXE сборки; работа со всеми Steam/retail-версиями не установлена.
