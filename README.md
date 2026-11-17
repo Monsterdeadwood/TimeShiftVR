@@ -21,17 +21,25 @@
 
 ## ⚡ FEATURES
 
-### A DIFFERENT SKY EACH TIME YOU LAUNCH
+### 👊 Punch enemies or strike with your weapon
 
-Weather and starting time change with each launch. The sun and moon move across a four-minute cycle, fog and rain shift as you play, and pavement stays wet after the rain.
+Swing a bare hand for a close-range hit, or use the weapon you’re holding to strike. Release the foregrip to free your other hand for melee.
 
-### DUCK BEHIND COVER IN REAL LIFE
+### ⏳ Freeze, slow or rewind the fight
 
-Physically crouch to lower your character in Roomscale, or switch to seated play in VR Settings.
+Use the right stick to control time. Freeze a firefight to move to another angle, slow it to give yourself time to aim, or rewind to try the encounter again.
 
-### BRACE THE GUN WITH YOUR OTHER HAND
+### 🛡️ Duck into cover and brace your rifle
 
-Aim with your controller, grab the foregrip to steady the weapon, and follow the laser from the barrel. Feel the trigger break and the recoil when a shot fires.
+Crouch physically in Roomscale. Reach for the foregrip with your free hand to steady the rifle as you bring it back up.
+
+### 🔴 Follow the barrel laser and feel the shot
+
+The laser shows where the muzzle is pointing. Feel the trigger break as you squeeze and the recoil when a round fires.
+
+### 🌦️ Fight through a different sky on each run
+
+Start the game at a different time of day with new weather. Watch wind push the rain sideways and see wet pavement gradually dry when the rain stops.
 
 <a name="screenshots"></a>
 
@@ -52,13 +60,13 @@ Aim with your controller, grab the foregrip to steady the weapon, and follow the
 
 | VR mod | Highlights |
 | --- | --- |
-| [Alone in the Dark (2008) VR](https://github.com/Monsterdeadwood/AloneInTheDark2008VR) | Tracked item handling and hand contact with walls |
-| [Battlefield 3: VRevamp](https://github.com/Monsterdeadwood/Battlefield-3-VRevamp) | Body holsters, two-handed aiming, and changing campaign skies |
-| [Burnout Paradise Remastered VR](https://github.com/Monsterdeadwood/BUrnOutPvr) | Head-tracked driving with stereo boost and exhaust effects |
-| [Crysis 2: VRevamp](https://github.com/Monsterdeadwood/C2VR) | Telekinesis, switchable weapon hands, and randomized weather and time of day |
-| [NOVA · CS:GO Legacy VR](https://github.com/Monsterdeadwood/CSGOVR) | Controller aiming and working optics in local bot matches |
-| [Metro 2033 VR](https://github.com/Monsterdeadwood/Metro2033VR) | Telekinesis, hand lightning, and object physics |
-| [Rainbow Six Siege VR](https://github.com/Monsterdeadwood/SiegeVR) | Tracked weapons and two-handed foregrip handling |
-| [Star Wars: The Force Unleashed II VR](https://github.com/Monsterdeadwood/TFU2VR) | Independent sabers, limb cuts, Force powers, and crate flight |
-| [Titanfall 1 VR](https://github.com/Monsterdeadwood/Titanfall1VR) | Aim with the controller and look around a Titan cockpit |
-| [You Are Empty: Absolute Edition VR](https://github.com/Monsterdeadwood/YouAreEmptyAEVR) | Tracked weapons and melee with either hand |
+| [Alone in the Dark (2008) VR](https://github.com/Monsterdeadwood/AloneInTheDark2008VR) | Aim a light by hand, carry a chair, and throw bottles |
+| [Battlefield 3: VRevamp](https://github.com/Monsterdeadwood/Battlefield-3-VRevamp) | Pull dropped guns toward you, draw from body slots, and fight through changing weather |
+| [Burnout Paradise Remastered VR](https://github.com/Monsterdeadwood/BUrnOutPvr) | Pull the handbrake, hit boost, and look around while racing |
+| [Crysis 2: VRevamp](https://github.com/Monsterdeadwood/C2VR) | Hit enemies with your fists or weapon, throw them with telekinesis, and swap weapon hands |
+| [NOVA · CS:GO Legacy VR](https://github.com/Monsterdeadwood/CSGOVR) | Aim and feel recoil, take scoped shots, and buy gear from the controllers |
+| [Metro 2033 VR](https://github.com/Monsterdeadwood/Metro2033VR) | Lift an enemy, shock them with your hand, or bounce a glowing core down a tunnel |
+| [Rainbow Six Siege VR](https://github.com/Monsterdeadwood/SiegeVR) | Brace a rifle by its foregrip, drop prone and use gadgets |
+| [Star Wars: The Force Unleashed II VR](https://github.com/Monsterdeadwood/TFU2VR) | Ignite two sabers independently, cut limbs, and ride a crate with the Force |
+| [Titanfall 1 VR](https://github.com/Monsterdeadwood/Titanfall1VR) | Call and board a Titan, catch shots with Vortex, and eject |
+| [You Are Empty: Absolute Edition VR](https://github.com/Monsterdeadwood/YouAreEmptyAEVR) | Shoot with one hand, hit with either, and reach out against walls |
