@@ -14,8 +14,8 @@
 ## 📦 INSTALLATION
 
 1. Install the original **TimeShift** on PC.
-2. Extract **Put Me in Folder of Game** into your TimeShift folder, next to `bin`.
-3. Connect your PC VR headset, select your OpenXR runtime, and run **`RUN.bat`** inside the mod folder.
+2. **Put the mod archive next to `TimeShift.exe`** in the `bin` folder. Extract the entire archive one level up, into the main TimeShift folder. The `Put Me in Folder of Game` folder should sit beside `bin`.
+3. Connect your PC VR headset, select your OpenXR runtime, and run **`RUN.bat`** from the extracted mod folder.
 
 <a name="features"></a>
 
