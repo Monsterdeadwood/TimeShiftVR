@@ -46,8 +46,8 @@ Play the original campaign in head-tracked OpenXR stereo. Choose smooth or snap 
 ## 📸 In-game screenshots
 
 <p align="center">
+  <a href="assets/gameplay/daylight-ride.jpg"><img src="assets/gameplay/daylight-ride.jpg" alt="Riding a quad bike into the hills in daylight" width="48%" align="top"></a>
   <a href="assets/gameplay/city-cobbles-in-rain.jpg"><img src="assets/gameplay/city-cobbles-in-rain.jpg" alt="Rain and firelight on an old city street" width="48%" align="top"></a>
-  <a href="assets/gameplay/rocket-launcher-in-the-city.jpg"><img src="assets/gameplay/rocket-launcher-in-the-city.jpg" alt="Tracked rocket launcher during the campaign test" width="48%" align="top"></a>
 </p>
 
 [Tester credits](TESTERS.md) · [Build details](docs/PROJECT_STATUS.md)
