@@ -47,8 +47,10 @@ Play the original campaign in head-tracked OpenXR stereo. Choose smooth or snap 
 
 <p align="center">
   <a href="assets/gameplay/daylight-ride.jpg"><img src="assets/gameplay/daylight-ride.jpg" alt="Riding a quad bike into the hills in daylight" width="48%" align="top"></a>
-  <a href="assets/gameplay/city-cobbles-in-rain.jpg"><img src="assets/gameplay/city-cobbles-in-rain.jpg" alt="Rain and firelight on an old city street" width="48%" align="top"></a>
+  <a href="assets/gameplay/quad-bike-in-rain.jpg"><img src="assets/gameplay/quad-bike-in-rain.jpg" alt="Quad bike on the same stretch of road during rain" width="48%" align="top"></a>
 </p>
+
+*The same stretch of road in dry weather and in rain.*
 
 [Tester credits](TESTERS.md) · [Build details](docs/PROJECT_STATUS.md)
 
