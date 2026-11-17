@@ -3,7 +3,7 @@
 >
 > **[Join the Flat2VR Discord](https://discord.gg/P4q9zt7ek)** · **[Open the TimeShift VR thread](https://discord.com/channels/747967102895390741/1564275115871707167)**
 >
-> Download the latest test build from the thread and share your test results there.
+> Download the latest test build from the thread and share your results there.
 
 <p align="center">
   <img src="assets/vr-banner.png" alt="TimeShift VR" width="590">
@@ -19,7 +19,7 @@
 
 ### RANDOMIZED WEATHER & DAY/NIGHT
 
-The R79 test build randomizes rain, clouds and fog independently. Its four-minute day/night cycle continues from the main menu into the opening city, changing the sky and city lighting.
+R81 rolls new weather and a starting time every launch. The sun and moon move on a four-minute day/night cycle, rain and fog change as you play, and streets stay wet after rain. The weather starts in the main menu and carries into gameplay.
 
 ### ROOMSCALE CROUCHING
 
