@@ -36,3 +36,5 @@ Test builds add feedback during the squeeze, a distinct trigger break and recoil
 ### STEREO VR & IN-GAME SETTINGS
 
 Play the original campaign in head-tracked OpenXR stereo. Choose smooth or snap turning and recenter in game.
+
+[Other VR mods](PORTFOLIO.md) · [Tester credits](TESTERS.md) · [Build details](docs/PROJECT_STATUS.md)
