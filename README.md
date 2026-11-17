@@ -1,9 +1,9 @@
 > [!IMPORTANT]
-> **💬 TEST BUILDS & DISCUSSION**
+> **💬 DOWNLOAD & DISCUSSION**
 >
 > **[Join the Flat2VR Discord](https://discord.gg/P4q9zt7ek)** · **[Open the TimeShift VR thread](https://discord.com/channels/747967102895390741/1564275115871707167)**
 >
-> Download the latest test build from the thread and share your results there.
+> Get the mod and share feedback in the game’s Flat2VR thread.
 
 <p align="center">
   <img src="assets/vr-banner.png" alt="TimeShift VR" width="590">
@@ -21,25 +21,17 @@
 
 ## ⚡ FEATURES
 
-### RANDOMIZED WEATHER & DAY/NIGHT
+### A DIFFERENT SKY EACH TIME YOU LAUNCH
 
-R81 rolls new weather and a starting time every launch. The sun and moon move on a four-minute day/night cycle, rain and fog change as you play, and streets stay wet after rain. The weather starts in the main menu and carries into gameplay.
+Weather and starting time change with each launch. The sun and moon move across a four-minute cycle, fog and rain shift as you play, and pavement stays wet after the rain.
 
-### ROOMSCALE CROUCHING
+### DUCK BEHIND COVER IN REAL LIFE
 
-Duck in real life to change your character’s stance and collision profile. Switch between Roomscale and seated play in VR Settings.
+Physically crouch to lower your character in Roomscale, or switch to seated play in VR Settings.
 
-### TRACKED AIM & TWO-HANDED GRIPS
+### BRACE THE GUN WITH YOUR OTHER HAND
 
-Point your weapon with your controller and steady it at the foregrip with your other hand. Nine weapons were exercised in testing.
-
-### TRIGGER FEEDBACK & BARREL LASER
-
-Test builds add feedback during the squeeze, a distinct trigger break and recoil when a shot fires. The laser stays aligned with the barrel through the tested reloads.
-
-### STEREO VR & IN-GAME SETTINGS
-
-Play the original campaign in head-tracked OpenXR stereo. Choose smooth or snap turning and recenter in game.
+Aim with your controller, grab the foregrip to steady the weapon, and follow the laser from the barrel. Feel the trigger break and the recoil when a shot fires.
 
 <a name="screenshots"></a>
 
@@ -52,7 +44,7 @@ Play the original campaign in head-tracked OpenXR stereo. Choose smooth or snap 
 
 *The same stretch of road in dry weather and in rain.*
 
-[Tester credits](TESTERS.md) · [Build details](docs/PROJECT_STATUS.md)
+[Tester credits](TESTERS.md)
 
 <a name="other-vr-mods"></a>
 
@@ -63,10 +55,10 @@ Play the original campaign in head-tracked OpenXR stereo. Choose smooth or snap 
 | [Alone in the Dark (2008) VR](https://github.com/Monsterdeadwood/AloneInTheDark2008VR) | Tracked item handling and hand contact with walls |
 | [Battlefield 3: VRevamp](https://github.com/Monsterdeadwood/Battlefield-3-VRevamp) | Body holsters, two-handed aiming, and changing campaign skies |
 | [Burnout Paradise Remastered VR](https://github.com/Monsterdeadwood/BUrnOutPvr) | Head-tracked driving with stereo boost and exhaust effects |
-| [Crysis 2: VRevamp](https://github.com/Monsterdeadwood/C2VR) | Physical melee, object grabbing, and a rooftop weapon range |
+| [Crysis 2: VRevamp](https://github.com/Monsterdeadwood/C2VR) | Telekinesis, switchable weapon hands, and randomized weather and time of day |
 | [NOVA · CS:GO Legacy VR](https://github.com/Monsterdeadwood/CSGOVR) | Controller aiming and working optics in local bot matches |
 | [Metro 2033 VR](https://github.com/Monsterdeadwood/Metro2033VR) | Telekinesis, hand lightning, and object physics |
 | [Rainbow Six Siege VR](https://github.com/Monsterdeadwood/SiegeVR) | Tracked weapons and two-handed foregrip handling |
-| [Star Wars: The Force Unleashed II VR](https://github.com/Monsterdeadwood/TFU2VR) | Two tracked lightsabers and independent Force grip |
+| [Star Wars: The Force Unleashed II VR](https://github.com/Monsterdeadwood/TFU2VR) | Independent sabers, limb cuts, Force powers, and crate flight |
 | [Titanfall 1 VR](https://github.com/Monsterdeadwood/Titanfall1VR) | Aim with the controller and look around a Titan cockpit |
 | [You Are Empty: Absolute Edition VR](https://github.com/Monsterdeadwood/YouAreEmptyAEVR) | Tracked weapons and melee with either hand |
