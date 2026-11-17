@@ -1,115 +1,38 @@
 > [!IMPORTANT]
-> **[TEST BUILDS & DISCUSSION · FLAT2VR DISCORD](https://discord.gg/P4q9zt7ek)**
-> Testing, build requests, feedback and discussion happen in the **Flat2VR Modding Discord**. Join the server and find the **TimeShift VR** thread.
+> **TEST BUILDS & DISCUSSION**
+>
+> **[Join the Flat2VR Discord](https://discord.gg/P4q9zt7ek)** · **[Open the TimeShift VR thread](https://discord.com/channels/747967102895390741/1564275115871707167)**
+>
+> Download the latest test build from the thread and share your test results there.
 
 <p align="center">
   <img src="assets/vr-banner.png" alt="TimeShift VR" width="590">
 </p>
 
-# TimeShift VR
+## INSTALLATION
 
-[Flat2VR Discord](https://discord.gg/P4q9zt7ek) · [All projects](PORTFOLIO.md)
+1. Install the original **TimeShift** on PC.
+2. Extract **Put Me in Folder of Game** into your TimeShift folder, next to `bin`.
+3. Connect your PC VR headset, select your OpenXR runtime, and run **`RUN.bat`** inside the mod folder.
 
-![Project status](assets/vr-status.svg)
+## FEATURES
 
-A VR mod for the original TimeShift on PC. Aim and support weapons with your hands, control the game’s time powers and adjust settings in VR. Play seated or use the Roomscale mode, which connects physical crouching to the game’s posture system.
+### RANDOMIZED WEATHER & DAY/NIGHT
 
-**Package baseline on this page: R65a community package / R66 precision candidate.**
+The R79 test build randomizes rain, clouds and fog independently. Its four-minute day/night cycle continues from the main menu into the opening city, changing the sky and city lighting.
 
-## Installation
+### ROOMSCALE CROUCHING
 
-1. Get the current **TimeShift VR** test package in the TimeShift thread on Flat2VR, matched to its supported game executable.
-2. Extract the complete **Put Me in Folder of Game** folder into the TimeShift directory, beside **bin**.
-3. Connect PC VR, activate its OpenXR runtime and open **RUN.bat** inside the mod folder.
-4. Seated mode is the default. Hold Left Menu, open Options → VR Settings to choose Roomscale, then tap Left Menu at a comfortable height.
+Duck in real life to change your character’s stance and collision profile. Switch between Roomscale and seated play in VR Settings.
 
-Current test-package availability is coordinated in Discord. Use the complete package for your supported game build; this project page is separate from a release download.
+### TRACKED AIM & TWO-HANDED GRIPS
 
-## What this project brings to VR
+Point your weapon with your controller and steady it at the foregrip with your other hand. Nine weapons were exercised in testing.
 
-- Stereo VR, tracked aiming and all nine weapons in the development/test branch.
-- Slow, freeze and reverse time directly from controller inputs.
-- Two-hand support at authored weapon grips, with a free hand after release.
-- Saved VR settings, smooth/snap turning, seated and Roomscale posture modes.
-- Physical crouch requests the original game posture/collision profile.
-- Launcher progress feedback and local SEND_TO_DISCORD diagnostics.
+### TRIGGER FEEDBACK & BARREL LASER
 
-<details>
-<summary><b>Controller quick reference</b></summary>
+Test builds add feedback during the squeeze, a distinct trigger break and recoil when a shot fires. The laser stays aligned with the barrel through the tested reloads.
 
-| Input | Action |
-| --- | --- |
-| Left stick / click | Move / hold crouch |
-| Right stick horizontal | Smooth or snap turn |
-| Right stick up / down / click | Reverse / slow / freeze time; repeat a mode to cancel it |
-| Right trigger / left trigger | Primary / secondary fire |
-| Right grip / left grip | Reload / weapon support near grip, otherwise Use + laser |
-| A / X | Jump and confirm / interact |
-| B tap / hold | Next / previous weapon |
-| Y tap / hold | Throw grenade / next grenade type |
-| Left Menu tap / hold | Recenter / game menu; hold threshold 650 ms |
+### STEREO VR & IN-GAME SETTINGS
 
-The complete package control sheet takes precedence for its version and interaction profile.
-
-</details>
-
-## Features in newer test builds
-
-- **Changing weather.** A test build went from dry weather to rain and storm. The weather clock and accumulated wind motion continued when moving from outdoors to an indoor area and back.
-- **Trigger and shot feedback.** An experimental trigger cue builds during the squeeze, gives a distinct break and plays recoil when the game records a shot. The dry-press test recorded a break cue without shot recoil.
-- **Laser follows the barrel.** Stereo captures sampled the laser and barrel during reloads on all nine test weapons. These weather, laser and feedback checks used XR Sim or runtime telemetry. How they feel in a headset remains open.
-
-## Current status
-
-**Experimental preview.** Native-game/XR Sim checks cover posture, recenter, selected video transitions and nine-weapon firing in the recorded revisions.
-
-- Physical-headset comfort and full-campaign Roomscale coverage remain open; low ceilings, ladders and platforms need broader playtesting.
-- Compatibility is tied to the package’s supported EXE identities; support for every Steam/retail executable is not established.
-
-R66 tests tracked primary-fire precision while retaining the shotgun pellet cone. It is a distinct experimental candidate; precision_aim=false restores the original accuracy model.
-
-[Detailed status and validation scope](docs/PROJECT_STATUS.md)
-
-## Testing & feedback
-
-Post in the game’s [Flat2VR thread](https://discord.gg/P4q9zt7ek) with your **mod version, game/store version, headset, OpenXR runtime, GPU, reproduction steps and the package’s diagnostic ZIP**. A short video is helpful for visual or handling problems.
-
-<!-- COMMUNITY_TESTERS_START -->
-## ❤️ Community testers — thank you!
-
-These VR projects improve thanks to the people sharing test reports, logs, videos and practical feedback across the portfolio.
-
-alvaro · Arkturus [CODA] · Arkturus Primacronus [HD2M] · Arthur G [ORE] · Bestgamer3 · Chtiblue · creative name [SC℧M] · Derp Dog · DNana51 [R1Δ] · Gritt [F2VR] · headbangerle. · huligan01 · jeremiasadasmki · Kerin\_Serica [1984] · kilo · Lawyer [WYRD] · little\_boxbr · Lord Beardsteak · MeWhenINameMyself · MetalikSix · neoz\_1980 · Notagameaddict · Pelmeschka · Potato Pancake Person · ReseTV · Rusty Gere · SilentBang [LTS] · SilentVortigaunt · Terry · ThE LaNd GuLl · Thomas-3D-VR · Uruz [F2VR] · Willthethrill · wxorys\_ · Xavier H. G.
-
-[Full community credits, games, feedback contributors and testing volunteers](TESTERS.md).
-
-The linked list shows which games each person helped with. Thank you as well to everyone whose reports arrived without a public display name.
-
-<!-- COMMUNITY_TESTERS_END -->
-
-## Other VR mods by Monsterdeadwood
-
-| Game / project | Focus | Visibility |
-| --- | --- | --- |
-| [Assassin’s Creed VR](https://github.com/Monsterdeadwood/AC1VR) | First-person exploration, tracked climbing and sword interaction | Private |
-| [Crysis 2: VRevamp](https://github.com/Monsterdeadwood/C2VR) | Original Crysis 2 in VR with tracked weapons, physical melee and a spatial HUD | Public |
-| [Star Wars: The Force Unleashed II VR](https://github.com/Monsterdeadwood/TFU2VR) | Tracked dual lightsabers, telekinesis and Force powers | Public |
-| [NOVA · Counter-Strike: Global Offensive (Legacy) VR](https://github.com/Monsterdeadwood/CSGOVR) | Local 5v5 bot matches, motion-controlled aiming and haptics | Public |
-| [You Are Empty: Absolute Edition VR](https://github.com/Monsterdeadwood/YouAreEmptyAEVR) | Absolute Edition with tracked weapons and melee with either hand | Public |
-| [Alone in the Dark (2008) VR](https://github.com/Monsterdeadwood/AloneInTheDark2008VR) | Tracked items, wall contact and the original throw controls | Public |
-| [Rainbow Six Siege VR](https://github.com/Monsterdeadwood/SiegeVR) | Shadow Legacy stereo and two-handed weapon handling | Public |
-| [Burnout Paradise Remastered VR](https://github.com/Monsterdeadwood/BUrnOutPvr) | Head-tracked stereo driving, vehicle menus and boost effects | Public |
-| [Titanfall 1 VR](https://github.com/Monsterdeadwood/Titanfall1VR) | R1Delta pilot aiming, stereo viewing and Titan cockpits | Public |
-| [Metro 2033 VR](https://github.com/Monsterdeadwood/Metro2033VR) | Original Metro 2033 with tracked interaction and PhysX experiments | Public |
-| [Insurgency VR](https://github.com/Monsterdeadwood/InsurgencyVR) | Early VR mod project for stereo rendering and the game camera | Private |
-| [Counter-Strike: Source VR](https://github.com/Monsterdeadwood/CSSVR) | Early VR mod project for stereo rendering and head tracking | Private |
-
-Private repository links are available to invited collaborators. Public project pages are marked above.
-
-## Credits & development notes
-
-Project maintained by [Monsterdeadwood](https://github.com/Monsterdeadwood). This is an independent fan VR project; you need your own supported copy of the original game.
-
-[Previous repository overview, preserved as history](README_RESEARCH_ARCHIVE.md).
-
-Documentation reviewed: **14 November 2026**.
+Play the original campaign in head-tracked OpenXR stereo. Choose smooth or snap turning and recenter in game.
